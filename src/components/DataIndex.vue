@@ -31,12 +31,18 @@
                   v-for="(col, colIndex) in columns"
                   :key="colIndex"
                 >
-                  <span v-if="!col.skip">
-                    {{ strTobject(data, col.dataIndex) }}
-                  </span>
+                  <slot :name="col.dataIndex" v-bind="data">
+                    <span v-if="!col.skip">
+                      {{ strTobject(data, col.dataIndex) }}
+                    </span>
+                  </slot>
                 </c-table-data-cell>
                 <c-table-data-cell v-if="actions">
-                  <span v-for="(action, acindex) in actions" :key="acindex">
+                  <span
+                    v-for="(action, acindex) in actions"
+                    :key="acindex"
+                    style="display: inline-block; margin-right: 0.3rem"
+                  >
                     <button
                       type="button"
                       class="btn btn-sm"
