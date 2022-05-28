@@ -5,6 +5,7 @@
       :columns="columns"
       :actions="actions"
       @data-update="handleUpdate"
+      @data-delete="handleDelete"
     >
       <template v-slot:top>
         <div class="mb-3 row justify-content-between">
@@ -107,6 +108,11 @@ const actions = [
     class: 'btn-warning',
     emit: 'data-update',
   },
+  {
+    title: 'Delete',
+    emit: 'data-delete',
+    class: 'btn-outline-danger',
+  },
 ]
 
 export default {
@@ -158,6 +164,26 @@ export default {
         path: this.apiPath,
         id,
         data,
+      })
+      this.$store.dispatch('data/index', { path: this.apiPath })
+    },
+    handleDelete(data) {
+      this.data = data
+      this.$swal({
+        icon: 'question',
+        title: 'Are you sure?',
+        html: `Want to delete <strong> ${data.name} </strong>`,
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataDeleted()
+        }
+      })
+    },
+    async dataDeleted() {
+      await this.$store.dispatch('data/delete', {
+        path: this.apiPath,
+        id: this.data.id,
       })
       this.$store.dispatch('data/index', { path: this.apiPath })
     },
