@@ -55,7 +55,7 @@ export const data = {
       try {
         await dataServices.dataDelete(path, id)
         const payload = {
-          title: 'Success create data',
+          title: 'Success delete data',
         }
         store.dispatch('notif/success', { payload })
       } catch (err) {

@@ -41,7 +41,11 @@
                   <span
                     v-for="(action, acindex) in actions"
                     :key="acindex"
-                    style="display: inline-block; margin-right: 0.3rem"
+                    style="
+                      display: inline-block;
+                      margin-right: 0.3rem;
+                      margin-bottom: 0.1rem;
+                    "
                   >
                     <button
                       type="button"
