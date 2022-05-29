@@ -8467,6 +8467,11 @@
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.18"
 
+"vue-select@^4.0.0-beta.3":
+  "integrity" "sha512-sXufbTDluz26a39UUZE9jeh9Hojnn8zr9qDDUlVEBc7E0F+h3+Nzy8YzyFHuVNrrYLmK0zrPkb7hWFulAEW41Q=="
+  "resolved" "https://registry.npmjs.org/vue-select/-/vue-select-4.0.0-beta.3.tgz"
+  "version" "4.0.0-beta.3"
+
 "vue-style-loader@^4.1.0", "vue-style-loader@^4.1.3":
   "integrity" "sha512-sFuh0xfbtpRlKfm39ss/ikqs9AbKCoXZBpHeVZ8Tx650o0k0q/YCM7FRvigtxpACezfq6af+a7JeqVTWvncqDg=="
   "resolved" "https://registry.npmjs.org/vue-style-loader/-/vue-style-loader-4.1.3.tgz"
@@ -8487,7 +8492,7 @@
   "resolved" "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@*", "vue@^2 || ^3.2.13", "vue@^3.0.0", "vue@^3.0.0-0", "vue@^3.0.1", "vue@^3.0.2", "vue@^3.2.20", "vue@^3.2.21", "vue@^3.2.23", "vue@3.2.23":
+"vue@*", "vue@^2 || ^3.2.13", "vue@^3.0.0", "vue@^3.0.0-0", "vue@^3.0.1", "vue@^3.0.2", "vue@^3.2.20", "vue@^3.2.21", "vue@^3.2.23", "vue@3.2.23", "vue@3.x":
   "integrity" "sha512-MGp9JZC37lzGhwSu6c1tQxrQbXbw7XKFqtYh7SFwNrNK899FPxGAHwSHMZijMChTSC3uZrD2BGO/3EHOgMJ0cw=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.23.tgz"
   "version" "3.2.23"
