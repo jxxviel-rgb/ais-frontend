@@ -27,7 +27,12 @@
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                 >
                   <title>document</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
                     <g
                       transform="translate(-1870.000000, -591.000000)"
                       fill="#FFFFFF"
@@ -77,7 +82,12 @@
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                 >
                   <title>spaceship</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
                     <g
                       transform="translate(-1720.000000, -592.000000)"
                       fill="#FFFFFF"
@@ -136,7 +146,12 @@
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                 >
                   <title>credit-card</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
                     <g
                       transform="translate(-2169.000000, -745.000000)"
                       fill="#FFFFFF"
@@ -186,7 +201,12 @@
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                 >
                   <title>settings</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                  >
                     <g
                       transform="translate(-2020.000000, -442.000000)"
                       fill="#FFFFFF"
@@ -233,24 +253,24 @@
   </div>
 </template>
 <script>
-import Chart from "chart.js/auto";
+import Chart from 'chart.js/auto'
 
 export default {
-  name: "active-users-chart",
+  name: 'active-users-chart',
   mounted() {
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+    var ctx = document.getElementById('chart-bars').getContext('2d')
     new Chart(ctx, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
           {
-            label: "Sales",
+            label: 'Sales',
             tension: 0.4,
             borderWidth: 0,
             borderRadius: 4,
             borderSkipped: false,
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
             data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
             maxBarThickness: 6,
           },
@@ -266,7 +286,7 @@ export default {
         },
         interaction: {
           intersect: false,
-          mode: "index",
+          mode: 'index',
         },
         scales: {
           y: {
@@ -283,11 +303,11 @@ export default {
               padding: 15,
               font: {
                 size: 14,
-                family: "Open Sans",
-                style: "normal",
+                family: 'Open Sans',
+                style: 'normal',
                 lineHeight: 2,
               },
-              color: "#fff",
+              color: '#fff',
             },
           },
           x: {
@@ -303,7 +323,7 @@ export default {
           },
         },
       },
-    });
+    })
   },
-};
+}
 </script>

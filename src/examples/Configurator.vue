@@ -177,58 +177,58 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import { activateDarkMode, deactivateDarkMode } from "@/assets/js/dark-mode";
+import { mapMutations } from 'vuex'
+import { activateDarkMode, deactivateDarkMode } from '@/assets/js/dark-mode'
 export default {
-  name: "configurator",
-  props: ["toggle"],
+  name: 'configurator',
+  props: ['toggle'],
   methods: {
-    ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
-    sidebarColor(color = "success") {
-      document.querySelector("#sidenav-main").setAttribute("data-color", color);
-      this.$store.state.mcolor = `card-background-mask-${color}`;
+    ...mapMutations(['navbarMinimize', 'sidebarType', 'navbarFixed']),
+    sidebarColor(color = 'success') {
+      document.querySelector('#sidenav-main').setAttribute('data-color', color)
+      this.$store.state.mcolor = `card-background-mask-${color}`
     },
     sidebarType(type) {
-      this.$store.state.sidebarType = type;
+      this.$store.state.sidebarType = type
     },
     setNavbarFixed() {
       if (
-        this.$route.name !== "Profile" ||
-        this.$route.name !== "All Projects"
+        this.$route.name !== 'Profile' ||
+        this.$route.name !== 'All Projects'
       ) {
-        this.$store.state.isNavFixed = !this.$store.state.isNavFixed;
+        this.$store.state.isNavFixed = !this.$store.state.isNavFixed
       }
     },
     setDarkMode() {
       if (this.$store.state.darkMode) {
-        this.$store.state.darkMode = false;
-        this.$store.state.sidebarType = "bg-white";
-        deactivateDarkMode();
-        return;
+        this.$store.state.darkMode = false
+        this.$store.state.sidebarType = 'bg-white'
+        deactivateDarkMode()
+        return
       } else {
-        this.$store.state.darkMode = true;
-        this.$store.state.sidebarType = "bg-default";
-        activateDarkMode();
+        this.$store.state.darkMode = true
+        this.$store.state.sidebarType = 'bg-default'
+        activateDarkMode()
       }
     },
     sidenavTypeOnResize() {
-      let white = document.querySelector("#btn-white");
+      let white = document.querySelector('#btn-white')
       if (window.innerWidth < 1200) {
-        white.classList.add("disabled");
+        white.classList.add('disabled')
       } else {
-        white.classList.remove("disabled");
+        white.classList.remove('disabled')
       }
-    }
+    },
   },
   computed: {
     sidenavResponsive() {
-      return this.sidenavTypeOnResize;
-    }
+      return this.sidenavTypeOnResize
+    },
   },
   beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
-    window.addEventListener("resize", this.sidenavTypeOnResize);
-    window.addEventListener("load", this.sidenavTypeOnResize);
-  }
-};
+    this.$store.state.isTransparent = 'bg-transparent'
+    window.addEventListener('resize', this.sidenavTypeOnResize)
+    window.addEventListener('load', this.sidenavTypeOnResize)
+  },
+}
 </script>

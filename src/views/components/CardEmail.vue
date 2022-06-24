@@ -19,6 +19,6 @@
 
 <script>
 export default {
-  name: "card-email",
-};
+  name: 'card-email',
+}
 </script>

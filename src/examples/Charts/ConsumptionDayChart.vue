@@ -10,25 +10,25 @@
 </template>
 
 <script>
-import Chart from "chart.js/auto";
+import Chart from 'chart.js/auto'
 export default {
-  name: "comsumption-by-day-chart",
+  name: 'comsumption-by-day-chart',
   mounted() {
     // Chart Consumption by day
-    var ctx = document.getElementById("chart-cons-week").getContext("2d");
+    var ctx = document.getElementById('chart-cons-week').getContext('2d')
 
     new Chart(ctx, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         datasets: [
           {
-            label: "Watts",
+            label: 'Watts',
             tension: 0.4,
             borderWidth: 0,
             borderRadius: 4,
             borderSkipped: false,
-            backgroundColor: "#3A416F",
+            backgroundColor: '#3A416F',
             data: [150, 230, 380, 220, 420, 200, 70],
             maxBarThickness: 6,
           },
@@ -44,7 +44,7 @@ export default {
         },
         interaction: {
           intersect: false,
-          mode: "index",
+          mode: 'index',
         },
         scales: {
           y: {
@@ -69,10 +69,10 @@ export default {
               beginAtZero: true,
               font: {
                 size: 12,
-                family: "Open Sans",
-                style: "normal",
+                family: 'Open Sans',
+                style: 'normal',
               },
-              color: "#9ca2b7",
+              color: '#9ca2b7',
             },
           },
           // eslint-disable-next-line no-dupe-keys
@@ -87,7 +87,7 @@ export default {
             ticks: {
               display: true,
               padding: 10,
-              color: "#9ca2b7",
+              color: '#9ca2b7',
             },
           },
           // eslint-disable-next-line no-dupe-keys
@@ -102,12 +102,12 @@ export default {
             ticks: {
               display: true,
               padding: 10,
-              color: "#9ca2b7",
+              color: '#9ca2b7',
             },
           },
         },
       },
-    });
+    })
   },
-};
+}
 </script>

@@ -6,7 +6,7 @@ export const data = {
   state: {
     isloading: false,
     data: null,
-    errorMessage: {}
+    errorMessage: {},
   },
   mutations: {
     SET_DATA(state, data) {
@@ -38,7 +38,6 @@ export const data = {
         }
         store.dispatch('notif/error', { payload })
         commit('SET_LOADING', false)
-
       }
     },
     async create({ commit }, { path, data }) {
@@ -51,7 +50,7 @@ export const data = {
         }
         store.dispatch('notif/success', { payload })
         commit('SET_LOADING', false)
-        return true;
+        return true
       } catch (err) {
         let data = err.response.data.data ?? {}
         commit('SET_ERROR_MESSAGE', data)

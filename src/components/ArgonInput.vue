@@ -23,11 +23,11 @@
 
 <script>
 export default {
-  name: "argon-input",
+  name: 'argon-input',
   props: {
     size: {
       type: String,
-      default: "default",
+      default: 'default',
     },
     valid: {
       type: Boolean,
@@ -44,16 +44,16 @@ export default {
   },
   methods: {
     getClasses: (size, valid) => {
-      let sizeValue, isValidValue;
+      let sizeValue, isValidValue
 
-      sizeValue = size ? `form-control-${size}` : null;
+      sizeValue = size ? `form-control-${size}` : null
 
-      isValidValue = valid ? `${valid}` : "invalid";
+      isValidValue = valid ? `${valid}` : 'invalid'
 
-      return `${sizeValue} ${isValidValue}`;
+      return `${sizeValue} ${isValidValue}`
     },
     getIcon: (icon) => (icon ? icon : null),
-    hasIcon: (icon) => (icon ? "input-group" : null),
+    hasIcon: (icon) => (icon ? 'input-group' : null),
   },
-};
+}
 </script>

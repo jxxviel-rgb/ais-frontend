@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "switch-card",
-  props: ["state", "stateText", "stateDescription", "isChecked", "classCustom"],
-};
+  name: 'switch-card',
+  props: ['state', 'stateText', 'stateDescription', 'isChecked', 'classCustom'],
+}
 </script>

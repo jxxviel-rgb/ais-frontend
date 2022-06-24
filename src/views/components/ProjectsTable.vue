@@ -9,42 +9,22 @@
           <thead>
             <tr>
               <th
-                class="
-                  text-uppercase text-secondary text-xxs
-                  font-weight-bolder
-                  opacity-7
-                "
+                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
                 Project
               </th>
               <th
-                class="
-                  text-uppercase text-secondary text-xxs
-                  font-weight-bolder
-                  opacity-7
-                  ps-2
-                "
+                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
               >
                 Budget
               </th>
               <th
-                class="
-                  text-uppercase text-secondary text-xxs
-                  font-weight-bolder
-                  opacity-7
-                  ps-2
-                "
+                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
               >
                 Status
               </th>
               <th
-                class="
-                  text-uppercase text-secondary text-xxs
-                  font-weight-bolder
-                  text-center
-                  opacity-7
-                  ps-2
-                "
+                class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2"
               >
                 Completion
               </th>
@@ -345,6 +325,6 @@
 
 <script>
 export default {
-  name: "projects-table",
-};
+  name: 'projects-table',
+}
 </script>

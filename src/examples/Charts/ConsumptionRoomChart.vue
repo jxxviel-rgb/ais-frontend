@@ -18,7 +18,11 @@
       <div class="row">
         <div class="text-center col-5">
           <div class="chart">
-            <canvas id="chart-consumption" class="chart-canvas" height="197"></canvas>
+            <canvas
+              id="chart-consumption"
+              class="chart-canvas"
+              height="197"
+            ></canvas>
           </div>
           <h4 class="font-weight-bold mt-n8">
             <span>471.3</span>
@@ -104,38 +108,38 @@
 </template>
 
 <script>
-import Chart from "chart.js/auto";
+import Chart from 'chart.js/auto'
 
 export default {
-  name: "consumption-by-room-chart",
+  name: 'consumption-by-room-chart',
   mounted() {
     // Chart Doughnut Consumption by room
-    var ctx1 = document.getElementById("chart-consumption").getContext("2d");
+    var ctx1 = document.getElementById('chart-consumption').getContext('2d')
 
-    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50)
 
-    gradientStroke1.addColorStop(1, "rgba(203,12,159,0.2)");
-    gradientStroke1.addColorStop(0.2, "rgba(72,72,176,0.0)");
-    gradientStroke1.addColorStop(0, "rgba(203,12,159,0)"); //purple colors
+    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)')
+    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)')
+    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)') //purple colors
 
     new Chart(ctx1, {
-      type: "doughnut",
+      type: 'doughnut',
       data: {
-        labels: ["Living Room", "Kitchen", "Attic", "Garage", "Basement"],
+        labels: ['Living Room', 'Kitchen', 'Attic', 'Garage', 'Basement'],
         datasets: [
           {
-            label: "Consumption",
+            label: 'Consumption',
             weight: 9,
             cutout: 90,
             tension: 0.9,
             pointRadius: 2,
             borderWidth: 2,
             backgroundColor: [
-              "#5e72e4",
-              "#8392ab",
-              "#11cdef",
-              "#2dce89",
-              "#fb6340",
+              '#5e72e4',
+              '#8392ab',
+              '#11cdef',
+              '#2dce89',
+              '#fb6340',
             ],
 
             data: [15, 20, 13, 32, 20],
@@ -153,7 +157,7 @@ export default {
         },
         interaction: {
           intersect: false,
-          mode: "index",
+          mode: 'index',
         },
         scales: {
           y: {
@@ -180,7 +184,7 @@ export default {
           },
         },
       },
-    });
+    })
   },
-};
+}
 </script>

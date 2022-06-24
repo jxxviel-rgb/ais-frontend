@@ -25,6 +25,6 @@
 
 <script>
 export default {
-  name: "card-todo",
-};
+  name: 'card-todo',
+}
 </script>

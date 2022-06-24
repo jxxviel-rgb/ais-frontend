@@ -19,11 +19,11 @@
 
 <script>
 export default {
-  name: "default-info-card",
+  name: 'default-info-card',
   props: {
     icon_bg: {
       type: String,
-      default: "bg-white",
+      default: 'bg-white',
     },
     classIcon: {
       type: String,
@@ -33,5 +33,5 @@ export default {
     desc: String,
     price: String,
   },
-};
+}
 </script>

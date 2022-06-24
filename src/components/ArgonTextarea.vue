@@ -14,10 +14,10 @@
 
 <script>
 export default {
-  name: "argon-textarea",
+  name: 'argon-textarea',
   props: {
     id: String,
     placeholder: String,
   },
-};
+}
 </script>

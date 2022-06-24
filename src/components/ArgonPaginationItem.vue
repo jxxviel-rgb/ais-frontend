@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "argon-pagination-item",
+  name: 'argon-pagination-item',
   props: {
     label: String,
     active: {
@@ -32,13 +32,13 @@ export default {
   },
   methods: {
     getClasses: (active, disabled) => {
-      let activeValue, disabledValue;
+      let activeValue, disabledValue
 
-      activeValue = active ? "active" : null;
-      disabledValue = disabled ? "disabled" : null;
+      activeValue = active ? 'active' : null
+      disabledValue = disabled ? 'disabled' : null
 
-      return `${activeValue} ${disabledValue}`;
+      return `${activeValue} ${disabledValue}`
     },
   },
-};
+}
 </script>

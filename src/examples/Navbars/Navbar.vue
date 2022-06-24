@@ -198,36 +198,36 @@
   </nav>
 </template>
 <script>
-import Breadcrumbs from "../Breadcrumbs.vue";
-import { mapMutations, mapActions } from "vuex";
+import Breadcrumbs from '../Breadcrumbs.vue'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
-  name: "navbar",
+  name: 'navbar',
   data() {
     return {
-      showMenu: false
-    };
-  },
-  props: ["minNav", "textWhite"],
-  created() {
-    this.minNav;
-  },
-  methods: {
-    ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
-    ...mapActions(["toggleSidebarColor"]),
-
-    toggleSidebar() {
-      this.toggleSidebarColor("bg-white");
-      this.navbarMinimize();
+      showMenu: false,
     }
   },
+  props: ['minNav', 'textWhite'],
+  created() {
+    this.minNav
+  },
+  methods: {
+    ...mapMutations(['navbarMinimize', 'toggleConfigurator']),
+    ...mapActions(['toggleSidebarColor']),
+
+    toggleSidebar() {
+      this.toggleSidebarColor('bg-white')
+      this.navbarMinimize()
+    },
+  },
   components: {
-    Breadcrumbs
+    Breadcrumbs,
   },
   computed: {
     currentRouteName() {
-      return this.$route.name;
-    }
-  }
-};
+      return this.$route.name
+    },
+  },
+}
 </script>

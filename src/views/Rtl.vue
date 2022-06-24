@@ -117,16 +117,16 @@
 </template>
 
 <script>
-import Card from "@/examples/Cards/Card.vue";
-import DeveloperCard from "./components/DeveloperCard.vue";
-import RocketCard from "./components/RocketCard.vue";
-import ActiveUsersChart from "@/examples/Charts/ActiveUsersChart.vue";
-import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
-import OrdersCard from "./components/OrdersCard.vue";
-import ProjectCard from "./components/ProjectCard.vue";
+import Card from '@/examples/Cards/Card.vue'
+import DeveloperCard from './components/DeveloperCard.vue'
+import RocketCard from './components/RocketCard.vue'
+import ActiveUsersChart from '@/examples/Charts/ActiveUsersChart.vue'
+import GradientLineChart from '@/examples/Charts/GradientLineChart.vue'
+import OrdersCard from './components/OrdersCard.vue'
+import ProjectCard from './components/ProjectCard.vue'
 
 export default {
-  name: "rtl-page",
+  name: 'rtl-page',
   components: {
     Card,
     DeveloperCard,
@@ -135,18 +135,18 @@ export default {
     GradientLineChart,
     OrdersCard,
     ProjectCard,
-  },  
+  },
   beforeMount() {
-    this.$store.state.isRTL = true;
-    document.querySelector("html").setAttribute("lang", "ar");
-    document.querySelector("html").setAttribute("dir", "rtl");
-    document.querySelector("#app").classList.add("rtl");
+    this.$store.state.isRTL = true
+    document.querySelector('html').setAttribute('lang', 'ar')
+    document.querySelector('html').setAttribute('dir', 'rtl')
+    document.querySelector('#app').classList.add('rtl')
   },
   beforeUnmount() {
-    this.$store.state.isRTL = false;
-    document.querySelector("html").removeAttribute("lang");
-    document.querySelector("html").removeAttribute("dir");
-    document.querySelector("#app").classList.remove("rtl");
+    this.$store.state.isRTL = false
+    document.querySelector('html').removeAttribute('lang')
+    document.querySelector('html').removeAttribute('dir')
+    document.querySelector('#app').classList.remove('rtl')
   },
-};
+}
 </script>

@@ -50,6 +50,6 @@
 
 <script>
 export default {
-  name: "card-message",
-};
+  name: 'card-message',
+}
 </script>

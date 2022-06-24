@@ -293,42 +293,42 @@
 </template>
 
 <script>
-import setNavPills from "@/assets/js/nav-pills.js";
-import setTooltip from "@/assets/js/tooltip.js";
-import ProfileCard from "./components/ProfileCard.vue";
-import ArgonInput from "@/components/ArgonInput.vue";
-import ArgonButton from "@/components/ArgonButton.vue";
+import setNavPills from '@/assets/js/nav-pills.js'
+import setTooltip from '@/assets/js/tooltip.js'
+import ProfileCard from './components/ProfileCard.vue'
+import ArgonInput from '@/components/ArgonInput.vue'
+import ArgonButton from '@/components/ArgonButton.vue'
 
-const body = document.getElementsByTagName("body")[0];
+const body = document.getElementsByTagName('body')[0]
 
 export default {
-  name: "profile",
+  name: 'profile',
   data() {
     return {
-      showMenu: false
-    };
+      showMenu: false,
+    }
   },
   components: { ProfileCard, ArgonInput, ArgonButton },
 
   mounted() {
-    this.$store.state.isAbsolute = true;
-    setNavPills();
-    setTooltip();
+    this.$store.state.isAbsolute = true
+    setNavPills()
+    setTooltip()
   },
   beforeMount() {
-    this.$store.state.imageLayout = "profile-overview";
-    this.$store.state.showNavbar = false;
-    this.$store.state.showFooter = true;
-    this.$store.state.hideConfigButton = true;
-    body.classList.add("profile-overview");
+    this.$store.state.imageLayout = 'profile-overview'
+    this.$store.state.showNavbar = false
+    this.$store.state.showFooter = true
+    this.$store.state.hideConfigButton = true
+    body.classList.add('profile-overview')
   },
   beforeUnmount() {
-    this.$store.state.isAbsolute = false;
-    this.$store.state.imageLayout = "default";
-    this.$store.state.showNavbar = true;
-    this.$store.state.showFooter = true;
-    this.$store.state.hideConfigButton = false;
-    body.classList.remove("profile-overview");
-  }
-};
+    this.$store.state.isAbsolute = false
+    this.$store.state.imageLayout = 'default'
+    this.$store.state.showNavbar = true
+    this.$store.state.showFooter = true
+    this.$store.state.hideConfigButton = false
+    body.classList.remove('profile-overview')
+  },
+}
 </script>

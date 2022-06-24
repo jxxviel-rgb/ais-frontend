@@ -39,6 +39,6 @@
 
 <script>
 export default {
-  name: "card-calendar",
-};
+  name: 'card-calendar',
+}
 </script>

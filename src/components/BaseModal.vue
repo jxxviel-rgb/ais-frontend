@@ -24,7 +24,13 @@
           >
             Close
           </button>
-          <button @click="$emit('on-confirm')" type="button" class="btn btn-primary">Save changes</button>
+          <button
+            @click="$emit('on-confirm')"
+            type="button"
+            class="btn btn-primary"
+          >
+            Save changes
+          </button>
         </div>
       </div>
     </div>
@@ -32,33 +38,33 @@
 </template>
 
 <script>
-import { Modal } from "bootstrap";
+import { Modal } from 'bootstrap'
 import { uuid } from 'vue-uuid'
 export default {
   props: {
     title: {
       type: String,
-      default: "Base modal",
+      default: 'Base modal',
     },
   },
   data() {
     return {
-      id: uuid.v4()
+      id: uuid.v4(),
     }
   },
   mounted() {
     let modal = new Modal(this.$refs[this.id])
 
-    this.emitter.on('show-modal', function() {
+    this.emitter.on('show-modal', function () {
       modal.show()
     })
-    this.emitter.on('hide-modal', function() {
+    this.emitter.on('hide-modal', function () {
       modal.hide()
     })
   },
   unmounted() {
-    this.emitter.off("show-modal");
-    this.emitter.off("hide-modal");
-  }
-};
+    this.emitter.off('show-modal')
+    this.emitter.off('hide-modal')
+  },
+}
 </script>

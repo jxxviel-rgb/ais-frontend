@@ -3,9 +3,7 @@
     <div class="toast-header bg-transparent border-0">
       <i class="me-2" :class="getIcon(icon, iconColor)" />
       <span class="me-auto font-weight-bold" :class="getTextColor(color)">
-        {{
-        title
-        }}
+        {{ title }}
       </span>
       <small :class="getTextColor(color)">{{ date }}</small>
       <i
@@ -21,7 +19,7 @@
 
 <script>
 export default {
-  name: "argon-snackbar",
+  name: 'argon-snackbar',
   props: {
     title: String,
     date: String,
@@ -29,30 +27,30 @@ export default {
     icon: String,
     color: {
       type: String,
-      default: "success",
+      default: 'success',
     },
     iconColor: {
       type: String,
-      default: "success",
+      default: 'success',
     },
     closeHandler: Function,
   },
   methods: {
     getColor: (color) => {
-      let colorValue;
+      let colorValue
 
-      if (color === "white") {
-        colorValue = "bg-white";
+      if (color === 'white') {
+        colorValue = 'bg-white'
       } else {
-        colorValue = `bg-gradient-${color}`;
+        colorValue = `bg-gradient-${color}`
       }
 
-      return colorValue;
+      return colorValue
     },
     getIcon: (icon, iconColor) =>
       icon && iconColor ? `${icon} text-${iconColor}` : null,
-    getTextColor: (color) => (color === "white" ? "text-dark" : "text-white"),
-    getHrColor: (color) => (color === "white" ? "dark" : "light"),
+    getTextColor: (color) => (color === 'white' ? 'text-dark' : 'text-white'),
+    getHrColor: (color) => (color === 'white' ? 'dark' : 'light'),
   },
-};
+}
 </script>

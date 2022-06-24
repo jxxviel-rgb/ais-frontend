@@ -92,58 +92,58 @@
 
 <script>
 export default {
-  name: "orders-card",
+  name: 'orders-card',
   props: {
     title: {
       type: String,
-      default: "Orders overview",
+      default: 'Orders overview',
     },
     text: {
       type: String,
-      default: "this month",
+      default: 'this month',
     },
     order: {
       type: String,
-      default: "$2400, Design changes",
+      default: '$2400, Design changes',
     },
     date: {
       type: String,
-      default: "22 DEC 7:20 PM",
+      default: '22 DEC 7:20 PM',
     },
     newOrder: {
       type: String,
-      default: "New order #1832412",
+      default: 'New order #1832412',
     },
     orderDate: {
       type: String,
-      default: "21 DEC 11 PM",
+      default: '21 DEC 11 PM',
     },
     payment: {
       type: String,
-      default: "Server payments for April",
+      default: 'Server payments for April',
     },
     paymentDate: {
       type: String,
-      default: "21 DEC 9:34 PM",
+      default: '21 DEC 9:34 PM',
     },
     newCard: {
       type: String,
-      default: "New card added for order #4395133",
+      default: 'New card added for order #4395133',
     },
     newCardDate: {
       type: String,
-      default: "20 DEC 2:20 AM",
+      default: '20 DEC 2:20 AM',
     },
     unlockPackages: {
       type: String,
-      default: "Unlock packages for development",
+      default: 'Unlock packages for development',
     },
     unlockPackagesDate: {
       type: String,
-      default: "18 DEC 4:54 AM",
+      default: '18 DEC 4:54 AM',
     },
     newOrder2: String,
     newOrder2Date: String,
   },
-};
+}
 </script>

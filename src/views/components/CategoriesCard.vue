@@ -117,56 +117,56 @@
 
 <script>
 export default {
-  name: "categories-card",
+  name: 'categories-card',
   props: {
     cardTitle: {
       type: String,
-      default: "Categories",
+      default: 'Categories',
     },
     title: {
       type: String,
-      default: "Devices",
+      default: 'Devices',
     },
     title2: {
       type: String,
-      default: "Tickets",
+      default: 'Tickets',
     },
     title3: {
       type: String,
-      default: "Error logs",
+      default: 'Error logs',
     },
     title4: {
       type: String,
-      default: "Happy Users",
+      default: 'Happy Users',
     },
     titleDesc: {
       type: String,
-      default: "250 in stock",
+      default: '250 in stock',
     },
     titleDesc2: {
       type: String,
-      default: "346+ sold",
+      default: '346+ sold',
     },
     title2Desc: {
       type: String,
-      default: "123 closed",
+      default: '123 closed',
     },
     title4Desc: {
       type: String,
-      default: "+ 430",
+      default: '+ 430',
     },
     title2Desc2: {
       type: String,
-      default: "15 open",
+      default: '15 open',
     },
     title3Desc: {
       type: String,
-      default: "1 is active",
+      default: '1 is active',
     },
     title3Desc2: {
       type: String,
-      default: "40 closed",
+      default: '40 closed',
     },
   },
-};
+}
 </script>

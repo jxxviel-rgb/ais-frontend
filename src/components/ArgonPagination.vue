@@ -6,20 +6,20 @@
 
 <script>
 export default {
-  name: "argon-pagination",
+  name: 'argon-pagination',
   props: {
     color: String,
     size: String,
   },
   methods: {
     getClasses: (color, size) => {
-      let colorValue, sizeValue;
+      let colorValue, sizeValue
 
-      colorValue = color ? `pagination-${color}` : null;
-      sizeValue = size ? `pagination-${size}` : null;
+      colorValue = color ? `pagination-${color}` : null
+      sizeValue = size ? `pagination-${size}` : null
 
-      return `${colorValue} ${sizeValue}`;
+      return `${colorValue} ${sizeValue}`
     },
   },
-};
+}
 </script>

@@ -37,30 +37,30 @@
   </div>
 </template>
 <script>
-import SidenavItem from "./SidenavItem.vue";
-import SidenavCard from "./SidenavCard.vue";
+import SidenavItem from './SidenavItem.vue'
+import SidenavCard from './SidenavCard.vue'
 
 export default {
-  name: "SidenavList",
+  name: 'SidenavList',
   props: {
-    cardBg: String
+    cardBg: String,
   },
   data() {
     return {
-      title: "Argon Dashboard 2",
-      controls: "dashboardsExamples",
-      isActive: "active"
-    };
+      title: 'Argon Dashboard 2',
+      controls: 'dashboardsExamples',
+      isActive: 'active',
+    }
   },
   components: {
     SidenavItem,
-    SidenavCard
+    SidenavCard,
   },
   methods: {
     getRoute() {
-      const routeArr = this.$route.path.split("/");
-      return routeArr[1];
-    }
-  }
-};
+      const routeArr = this.$route.path.split('/')
+      return routeArr[1]
+    },
+  },
+}
 </script>

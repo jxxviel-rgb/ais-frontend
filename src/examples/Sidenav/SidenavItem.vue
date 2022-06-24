@@ -14,16 +14,16 @@
 </template>
 <script>
 export default {
-  name: "sidenav-item",
+  name: 'sidenav-item',
   props: {
     url: {
       type: String,
-      required: true
+      required: true,
     },
     navText: {
       type: String,
-      required: true
-    }
-  }
-};
+      required: true,
+    },
+  },
+}
 </script>

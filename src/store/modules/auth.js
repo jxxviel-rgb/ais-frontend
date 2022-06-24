@@ -22,7 +22,7 @@ export const auth = {
           title: 'Success',
         }
         store.dispatch('notif/success', { payload })
-        router.push({name: 'Company'})
+        router.push({ name: 'Company' })
       } catch (err) {
         console.log(err)
         const payload = {

@@ -43,21 +43,21 @@
   </aside>
 </template>
 <script>
-import SidenavList from "./SidenavList.vue";
-import logo from "@/assets/img/logo-ct-dark.png";
-import logoWhite from "@/assets/img/logo-ct.png";
+import SidenavList from './SidenavList.vue'
+import logo from '@/assets/img/logo-ct-dark.png'
+import logoWhite from '@/assets/img/logo-ct.png'
 
 export default {
-  name: "index",
+  name: 'index',
   components: {
-    SidenavList
+    SidenavList,
   },
   data() {
     return {
       logo,
-      logoWhite
-    };
+      logoWhite,
+    }
   },
-  props: ["custom_class", "layout"]
-};
+  props: ['custom_class', 'layout'],
+}
 </script>

@@ -26,13 +26,7 @@ Coded by www.creative-tim.com
     v-if="this.$store.state.showSidenav"
   />
   <main
-    class="
-      main-content
-      position-relative
-      max-height-vh-100
-      h-100
-      border-radius-lg
-    "
+    class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
   >
     <!-- nav -->
     <navbar
@@ -55,14 +49,14 @@ Coded by www.creative-tim.com
   </main>
 </template>
 <script>
-import Sidenav from "./examples/Sidenav";
-import Configurator from "@/examples/Configurator.vue";
-import Navbar from "@/examples/Navbars/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
-import { mapMutations } from "vuex";
+import Sidenav from './examples/Sidenav'
+import Configurator from '@/examples/Configurator.vue'
+import Navbar from '@/examples/Navbars/Navbar.vue'
+import AppFooter from '@/examples/Footer.vue'
+import { mapMutations } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Sidenav,
     Configurator,
@@ -70,38 +64,38 @@ export default {
     AppFooter,
   },
   methods: {
-    ...mapMutations(["toggleConfigurator", "navbarMinimize"]),
+    ...mapMutations(['toggleConfigurator', 'navbarMinimize']),
     closeHandler() {
-      this.$store.state.notif.active = false;
+      this.$store.state.notif.active = false
     },
   },
   computed: {
     navClasses() {
       return {
-        "position-sticky bg-white left-auto top-2 z-index-sticky":
+        'position-sticky bg-white left-auto top-2 z-index-sticky':
           this.$store.state.isNavFixed && !this.$store.state.darkMode,
-        "position-sticky bg-default left-auto top-2 z-index-sticky":
+        'position-sticky bg-default left-auto top-2 z-index-sticky':
           this.$store.state.isNavFixed && this.$store.state.darkMode,
-        "position-absolute px-4 mx-0 w-100 z-index-2":
-          this.$store.state.isAbsolute,
-        "px-0 mx-4": !this.$store.state.isAbsolute,
-      };
+        'position-absolute px-4 mx-0 w-100 z-index-2': this.$store.state
+          .isAbsolute,
+        'px-0 mx-4': !this.$store.state.isAbsolute,
+      }
     },
   },
   watch: {
-    "$store.state.notif.active": async function () {
-      const notif = this.$store.state.notif;
+    '$store.state.notif.active': async function () {
+      const notif = this.$store.state.notif
       if (notif.active) {
         await this.$swal({
           icon: notif.icon,
           title: notif.title,
-        });
-        this.closeHandler();
+        })
+        this.closeHandler()
       }
     },
   },
   beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
+    this.$store.state.isTransparent = 'bg-transparent'
   },
-};
+}
 </script>
