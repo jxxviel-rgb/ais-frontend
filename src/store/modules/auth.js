@@ -1,5 +1,6 @@
 import authServices from '@/services/authServices'
 import store from '@/store'
+import router from '../../router'
 
 export const auth = {
   namespaced: true,
@@ -21,6 +22,7 @@ export const auth = {
           title: 'Success',
         }
         store.dispatch('notif/success', { payload })
+        router.push({name: 'Company'})
       } catch (err) {
         console.log(err)
         const payload = {
