@@ -1,29 +1,63 @@
-import { createStore } from 'vuex'
-
-import { auth } from '@/store/modules/auth'
-import { notif } from '@/store/modules/notif'
-import { data } from '@/store/modules/data'
+import { createStore } from "vuex";
+import { auth } from './modules/auth'
+import { data } from './modules/data'
+import { notif } from './modules/notif'
 
 export default createStore({
   state: {
-    sidebarVisible: '',
-    sidebarUnfoldable: false,
+    hideConfigButton: false,
+    isPinned: true,
+    showConfig: false,
+    sidebarType: "bg-white",
+    isRTL: false,
+    mcolor: "",
+    darkMode: false,
+    isNavFixed: false,
+    isAbsolute: false,
+    showNavs: true,
+    showSidenav: true,
+    showNavbar: true,
+    showFooter: true,
+    showMain: true,
+    layout: "default"
   },
   mutations: {
-    toggleSidebar(state) {
-      state.sidebarVisible = !state.sidebarVisible
+    toggleConfigurator(state) {
+      state.showConfig = !state.showConfig;
     },
-    toggleUnfoldable(state) {
-      state.sidebarUnfoldable = !state.sidebarUnfoldable
+    navbarMinimize(state) {
+      const sidenav_show = document.querySelector(".g-sidenav-show");
+
+      if (sidenav_show.classList.contains("g-sidenav-hidden")) {
+        sidenav_show.classList.remove("g-sidenav-hidden");
+        sidenav_show.classList.add("g-sidenav-pinned");
+        state.isPinned = true;
+      } else {
+        sidenav_show.classList.add("g-sidenav-hidden");
+        sidenav_show.classList.remove("g-sidenav-pinned");
+        state.isPinned = false;
+      }
     },
-    updateSidebarVisible(state, payload) {
-      state.sidebarVisible = payload.value
+    sidebarType(state, payload) {
+      state.sidebarType = payload;
     },
+    navbarFixed(state) {
+      if (state.isNavFixed === false) {
+        state.isNavFixed = true;
+      } else {
+        state.isNavFixed = false;
+      }
+    }
   },
-  actions: {},
+  actions: {
+    toggleSidebarColor({ commit }, payload) {
+      commit("sidebarType", payload);
+    }
+  },
+  getters: {},
   modules: {
     auth,
     notif,
     data,
-  },
-})
+  }
+});

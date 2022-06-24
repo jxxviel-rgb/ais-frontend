@@ -1,165 +1,204 @@
-[![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
-[![npm package][npm-coreui-badge]][npm-coreui]
-[![NPM downloads][npm-coreui-download]][npm-coreui]  
-[![@coreui vue](https://img.shields.io/badge/@coreui%20-vue-lightgrey.svg?style=flat-square)](https://github.com/coreui/vue)
-[![npm package][npm-coreui-vue-badge]][npm-coreui-vue]
-[![NPM downloads][npm-coreui-vue-download]][npm-coreui-vue]  
-[![npm next][npm-next]][npm]
+# [Vue Argon Dashboard 2](http://demos.creative-tim.com/vue-argon-dashboard/?ref=readme-vad) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/intent/tweet?url=https://www.creative-tim.com/product/vue-argon-dashboard&text=Check%20Vue%Argon%20Dashboard%20made%20by%20@CreativeTim%20#webdesign%20#dashboard%20#argondesign%20#vue%20https://www.creative-tim.com/product/vue-argon-dashboard)
 
-[npm-coreui]: https://www.npmjs.com/package/@coreui/coreui
-[npm-coreui-badge]: https://img.shields.io/npm/v/@coreui/coreui.png?style=flat-square
-[npm-coreui-download]: https://img.shields.io/npm/dm/@coreui/coreui.svg?style=flat-square
-[npm-coreui-vue]: https://www.npmjs.com/package/@coreui/vue
-[npm-coreui-vue-badge]: https://img.shields.io/npm/v/@coreui/vue.png?style=flat-square
-[npm-coreui-vue-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
-[npm-next]: https://img.shields.io/npm/v/@coreui/vue/next.png?style=flat-square
-[npm]: https://www.npmjs.com/package/@coreui/vue
+![version](https://img.shields.io/badge/version-3.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/vue-argon-dashboard.svg)](https://github.com/creativetimofficial/vue-argon-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/vue-argon-dashboard.svg)](https://github.com/creativetimofficial/vue-argon-dashboard/issues?q=is%3Aissue+is%3Aclosed)
 
-# CoreUI Free Vue Admin Template v4
+![Image](https://s3.amazonaws.com/creativetim_bucket/products/156/original/vue-argon-dashboard.jpg)
 
-CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
+Start your Development with an Innovative Admin Template for Bootstrap 5 and VueJS 3. If you like the look & feel of the hottest design trend right now, you will fall in love with this dashboard! It features a huge number of components built to fit together and look amazing.
+
+**Fully Coded Components**<br />
+Vue Argon Dashboard 2 is built with over 70 frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining. All components can take variations in color, which you can easily modify using SASS files and classes. You will save a lot of time going from prototyping to full-functional code because all elements are implemented.
+
+This free Bootstrap 5 & VueJS 3 Dashboard is coming with prebuilt design blocks, so the development process is seamless,
+switching from our pages to the real website is very easy to be done.
+
+View [all components here](https://www.creative-tim.com/learning-lab/vue/alerts/argon-dashboard/).
+
+**Documentation built by Developers**<br />
+Each element is well presented in very complex documentation.
+You can read more about the [documentation here](https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/).
+
+**Example Pages**<br />
+If you want to get inspiration or just show something directly to your clients, you can jump-start your development with our pre-built example pages. Every page is spaced well, with attractive layouts and pleasing shapes. Vue Argon Dashboard 2 has everything you need to quickly set up an amazing project.
+
+View [example pages here](https://demos.creative-tim.com/vue-argon-dashboard/).
+
+**HELPFUL LINKS**
+
+- View [Github Repository](https://github.com/creativetimofficial/vue-argon-dashboard)
+- Check [FAQ Page](https://www.creative-tim.com/faq)
+
+#### Special thanks
+
+During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
+
+- [Popper.js](https://popper.js.org/) - Kickass library used to manage poppers
+
+Let us know your thoughts below. And good luck with development!
 
 ## Table of Contents
 
-* [Versions](#versions)
-* [CoreUI Pro](#coreui-pro)
-* [Quick Start](#quick-start)
-* [Installation](#installation)
-* [Basic usage](#basic-usage)
-* [What's included](#whats-included)
-* [Documentation](#documentation)
-* [Versioning](#versioning)
-* [Creators](#creators)
-* [Community](#community)
-* [Copyright and License](#copyright-and-license)
+- [Versions](#versions)
+- [Demo](#demo)
+- [Quick Start](#quick-start)
+- [Documentation](#documentation)
+- [File Structure](#file-structure)
+- [Browser Support](#browser-support)
+- [Resources](#resources)
+- [Reporting Issues](#reporting-issues)
+- [Technical Support or Questions](#technical-support-or-questions)
+- [Licensing](#licensing)
+- [Useful Links](#useful-links)
 
 ## Versions
 
-* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
-* [CoreUI Free Angular Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
-* [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
-* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
+[<img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/vue-argon-dashboard?ref=readme-vad)
 
-## CoreUI Pro
+| VueJS |
+| ----- |
 
-**Only customers with [Enterpise Membership Plan](https://coreui.io/pro/#buy) have access to private github CoreUI Pro repository.**
+| [![Vue Argon Dashboard 2](https://s3.amazonaws.com/creativetim_bucket/products/156/orginal/vue-argon-dashboard.jpg)](http://demos.creative-tim.com/vue-argon-dashboard/?ref=readme-vad)
 
-* 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
-* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
-* 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
-* 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
+## Demo
 
-## Quick Start
+- [Profile](https://demos.creative-tim.com/vue-argon-dashboard/#/profile?ref=readme-vad)
+- [Sign In](https://demos.creative-tim.com/vue-argon-dashboard/#/sign-in?ref=readme-vad)
+- [Sign Up](https://demos.creative-tim.com/vue-argon-dashboard/#/sign-up?ref=readme-vad)
 
-- [Download the latest release](https://github.com/coreui/coreui-free-vue-admin-template/archive/refs/heads/main.zip)
-- Clone the repo: `git clone https://github.com/coreui/coreui-free-vue-admin-template.git`
+[View More](https://demos.creative-tim.com/vue-argon-dashboard/#/dashboard-default?ref=readme-vad).
 
-### Instalation
+## Quick start
 
-``` bash
-$ npm install
-```
+Quick start options:
 
-or
+- Download from [Creative Tim](https://www.creative-tim.com/product/vue-argon-dashboard?ref=readme-vad).
 
-``` bash
-$ yarn install
-```
+## Terminal Commands
 
-### Basic usage
-
-``` bash
-# dev server with hot reload at http://localhost:3000
-$ npm run serve
-```
-
-or 
-
-``` bash
-# dev server with hot reload at http://localhost:3000
-$ yarn serve
-```
-
-Navigate to [http://localhost:3000](http://localhost:3000). The app will automatically reload if you change any of the source files.
-
-#### Build
-
-Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
-
-```bash
-# build for production with minification
-$ npm run build
-```
-
-or
-
-```bash
-# build for production with minification
-$ yarn build
-```
-
-## What's included
-
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
-```
-coreui-free-vue-admin-template
-├── public/          # static files
-│   └── index.html   # html template
-│
-├── src/             # project root
-│   ├── assets/      # images, icons, etc.
-│   ├── components/  # common components - header, footer, sidebar, etc.
-│   ├── layouts/     # layout containers
-│   ├── scss/        # scss styles
-│   ├── router       # routes config
-│   └── store        # template state example 
-│   ├── views/       # application views
-│   ├── _nav.js      # sidebar navigation config
-│   ├── App.vue
-│   ├── ...
-│   └── main.js
-│
-└── package.json
-```
+1. Download and Install NodeJs LTS version from [NodeJs Official Page](https://nodejs.org/en/download/).
+2. Navigate to the root ./ directory of the product and run `npm install` to install our local dependencies.
 
 ## Documentation
 
-The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for Vue](https://coreui.io/vue/)
+The documentation for the Vue Argon Dashboard 2 is hosted at our [website](https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/?ref=readme-vad).
 
-## Versioning
+### What's included
 
-For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
+Within the download you'll find the following directories and files:
 
-See [the Releases section of our project](https://github.com/coreui/coreui-free-vue-admin-template/releases) for changelogs for each release version.
+```
+vue-argon-dashboard
+    ├── public
+    │   ├── favicon.png
+    │   └── index.html
+    ├── src
+    │   ├── assets
+    │   │   ├── css
+    │   │   ├── fonts
+    │   │   ├── img
+    │   │   ├── js
+    │   │   └── scss
+    │   ├── components
+    │   │   ├── ArgonAlert.vue
+    │   │   ├── ArgonAvatar.vue
+    │   │   ├── ArgonBadge.vue
+    │   │   ├── ArgonButton.vue
+    │   │   ├── ArgonCheckbox.vue
+    │   │   ├── ArgonInput.vue
+    │   │   ├── ArgonPagination.vue
+    │   │   ├── ArgonPaginationItem.vue
+    │   │   ├── ArgonProgress.vue
+    │   │   ├── ArgonRadio.vue
+    │   │   ├── ArgonSnackbar.vue
+    │   │   ├── ArgonSocialButton.vue
+    │   │   ├── ArgonSwitch.vue
+    │   │   └── ArgonTextarea.vue
+    │   ├── examples
+    │   │   ├── Cards
+    │   │   ├── Charts
+    │   │   ├── Navbars
+    │   │   ├── PageLayout
+    │   │   ├── Sidenav
+    │   │   ├── Breadcrumbs.vue
+    │   │   ├── Configurator.vue
+    │   │   └── Footer.vue
+    │   ├── router
+    │   ├── store
+    │   ├── views
+    │   │   ├── components
+    │   │   ├── Billing.vue
+    │   │   ├── Dashboard.vue
+    │   │   ├── Home.vue
+    │   │   ├── Profile.vue
+    │   │   ├── Rtl.vue
+    │   │   ├── Signin.vue
+    │   │   ├── Signup.vue
+    │   │   ├── Tables.vue
+    │   │   └── VirtualReality.vue
+    │   ├── App.vue
+    │   ├── argon-dashboard.js
+    │   └── main.js
+    ├── .browserslistrc
+    ├── .eslintrc.js
+    ├── .gitignore
+    ├── babel.config.js
+    ├── CHANGELOG.md
+    ├── ISSUE_TEMPLATE.md
+    ├── LICENSE
+    ├── package.json
+    └── README.md
+```
 
-## Creators
+## Browser Support
 
-**Łukasz Holeczek**
-* <https://twitter.com/lukaszholeczek>
-* <https://github.com/mrholek>
-* <https://github.com/coreui>
+At present, we officially aim to support the last two versions of the following browsers:
 
-**CoreUI team**
-* https://github.com/orgs/coreui/people
+<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
 
-## Community
+## Resources
 
-Get updates on CoreUI's development and chat with the project maintainers and community members.
+- [Live Preview](https://demos.creative-tim.com/vue-argon-dashboard/#/dashboard-default?ref=readme-vad)
+- [Download Page](https://www.creative-tim.com/product/vue-argon-dashboard?ref=readme-vad)
+- Documentation is [here](https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/?ref=readme-vad)
+- [License Agreement](https://www.creative-tim.com/license?ref=readme-vad)
+- [Support](https://www.creative-tim.com/contact-us?ref=readme-vad)
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/vue-argon-dashboard/issues)
 
-- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
-- Read and subscribe to [CoreUI Blog](https://blog.coreui.ui/).
+## Reporting Issues
 
-## Copyright and License
+We use GitHub Issues as the official bug tracker for the Vue Argon Dashboard 2. Here are some advices for our users that want to report an issue:
 
-copyright 2021 creativeLabs Łukasz Holeczek.   
+1. Make sure that you are using the latest version of the Vue Argon Dashboard 2. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/product/vue-argon-dashboard?ref=readme-vad).
+2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
+3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
- 
-Code released under [the MIT license](https://github.com/coreui/coreui-free-vue-admin-template/blob/master/LICENSE).
-There is only one limitation you can't can’t re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In past we faced some problems with persons who tried to sell CoreUI based templates.
+## Technical Support or Questions
 
-## Support CoreUI Development
+If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us?ref=readme-vad) instead of opening an issue.
 
-CoreUI is an MIT licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying [CoreUI Pro Version](https://coreui.io/pro/).
+## Licensing
 
-We're also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).
+- Copyright 2022 [Creative Tim](https://www.creative-tim.com?ref=readme-vad)
+- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-vad)
+
+## Useful Links
+
+- [More products](https://www.creative-tim.com/templates?ref=readme-vad) from Creative Tim
+
+- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
+
+- [Freebies](https://www.creative-tim.com/bootstrap-themes/free?ref=readme-vad) from Creative Tim
+
+- [Affiliate Program](https://www.creative-tim.com/affiliates/new?ref=readme-vad) (earn money)
+
+##### Social Media
+
+Twitter: <https://twitter.com/CreativeTim>
+
+Facebook: <https://www.facebook.com/CreativeTim>
+
+Dribbble: <https://dribbble.com/creativetim>
+
+Google+: <https://plus.google.com/+CreativetimPage>
+
+Instagram: <https://instagram.com/creativetimofficial>

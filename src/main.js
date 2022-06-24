@@ -1,34 +1,24 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-
-import CoreuiVue from '@coreui/vue'
-import CIcon from '@coreui/icons-vue'
-import { iconsSet as icons } from '@/assets/icons'
-import DocsCallout from '@/components/DocsCallout'
-import DocsExample from '@/components/DocsExample'
-import DataIndex from '@/components/DataIndex'
+import { createApp } from "vue";
+import App from "./App.vue";
+import store from "./store";
+import router from "./router";
+import "./assets/css/nucleo-icons.css";
+import "./assets/css/nucleo-svg.css";
+import ArgonDashboard from "./argon-dashboard";
+import DataIndex from './components/DataIndex'
+import BaseModal from './components/BaseModal'
 import emitter from 'mitt'
 
-import VueSweetalert2 from 'vue-sweetalert2'
+import VueSweetalert2 from "vue-sweetalert2";
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css'
 
-const app = createApp(App)
-app.config.globalProperties.emitter = emitter()
-app.use(store)
-app.use(router)
-app.use(CoreuiVue)
-app.use(VueSweetalert2)
-app.use()
-app.provide('icons', icons)
-app.component('CIcon', CIcon)
-app.component('DocsCallout', DocsCallout)
-app.component('DocsExample', DocsExample)
-app.component('data-index', DataIndex)
-app.component('v-select', vSelect)
-
-app.mount('#app')
+const appInstance = createApp(App);
+appInstance.config.globalProperties.emitter = emitter()
+appInstance.use(store);
+appInstance.use(router);
+appInstance.use(ArgonDashboard);
+appInstance.use(VueSweetalert2);
+appInstance.component('data-index', DataIndex)
+appInstance.component('base-modal', BaseModal)
+appInstance.mount("#app");
