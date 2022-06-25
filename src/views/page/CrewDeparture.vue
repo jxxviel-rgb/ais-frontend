@@ -7,6 +7,7 @@
             <div class="card-header">
               <h6>Crew Depature</h6>
             </div>
+            <data-index :columns="columns"></data-index>
           </div>
         </div>
       </div>
