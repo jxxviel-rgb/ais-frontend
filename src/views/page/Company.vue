@@ -8,16 +8,14 @@
               <h6>Company data</h6>
             </div>
             <div class="card-body">
-              <button
-                class="btn btn-primary"
-                @click="isEdit ? dataUpdated() : createCompany()"
-              >
+              <button class="btn btn-primary" @click="createCompany()">
                 Add new company
               </button>
               <data-index
                 :columns="column"
                 :actions="actions"
                 @data-edit="updateCompany"
+                @data-delete="handleDelete"
               />
             </div>
           </div>
@@ -25,7 +23,10 @@
       </div>
     </div>
   </main>
-  <base-modal :title="modalTitle" @on-confirm="dataCreated">
+  <base-modal
+    :title="modalTitle"
+    @on-confirm="isEdit ? dataUpdated() : dataCreated()"
+  >
     <template #body>
       <div class="form-group">
         <label for="">Company Name</label>
@@ -185,6 +186,9 @@ export default {
         id: this.id,
         data,
       })
+
+      this.emitter.emit('hide-modal')
+      this.emitter.emit('fetch', this.apiPath)
     },
     async dataCreated() {
       let data = {
@@ -207,6 +211,26 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    handleDelete(data) {
+      this.id = data.id
+      this.$swal({
+        icon: 'question',
+        title: 'Are you sure?',
+        html: `Want to delete <strong> ${data.name} </strong>`,
+        confirmButtonText: 'Yes, delete it!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dataDeleted()
+        }
+      })
+    },
+    async dataDeleted() {
+      await this.$store.dispatch('data/delete', {
+        path: this.apiPath,
+        id: this.id,
+      })
+      this.$store.dispatch('data/index', { path: this.apiPath })
     },
   },
 }
