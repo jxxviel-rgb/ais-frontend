@@ -26,6 +26,61 @@
           </template>
         </sidenav-item>
       </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/crew"
+          :class="getRoute() === 'crew' ? 'active' : ''"
+          navText="Crew"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/crew-departure"
+          :class="getRoute() === 'Crew Departure' ? 'active' : ''"
+          navText="Crew Departure"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/activity"
+          :class="getRoute() === 'Activity' ? 'active' : ''"
+          navText="Activity"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/harbor"
+          :class="getRoute() === 'harbor' ? 'active' : ''"
+          navText="Harbor"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/vessel"
+          :class="getRoute() === 'vessel' ? 'active' : ''"
+          navText="Vessel"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
     </ul>
   </div>
   <div class="pt-3 mx-3 mt-3 sidenav-footer">
