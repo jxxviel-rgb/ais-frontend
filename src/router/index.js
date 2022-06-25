@@ -64,6 +64,31 @@ const routes = [
     name: 'Signup',
     component: Signup,
   },
+  {
+    path: '/harbor',
+    name: 'Harbor',
+    component: () => import('@/views/page/Harbor.vue'),
+  },
+  {
+    path: '/crew',
+    name: 'Crew',
+    component: () => import('@/views/page/Crew.vue'),
+  },
+  {
+    path: '/crew-departure',
+    name: 'Crew Departure',
+    component: () => import('@/views/page/CrewDeparture.vue'),
+  },
+  {
+    path: '/activity',
+    name: 'Activity',
+    component: () => import('@/views/page/Activity.vue'),
+  },
+  {
+    path: '/vessel',
+    name: 'Vessel',
+    component: () => import('@/views/page/Vessel.vue'),
+  },
 ]
 
 const router = createRouter({
