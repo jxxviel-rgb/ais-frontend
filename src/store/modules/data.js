@@ -52,7 +52,7 @@ export const data = {
         commit('SET_LOADING', false)
         return true
       } catch (err) {
-        let data = err.response.data.data ?? {}
+        let data = err.response.data.data
         commit('SET_ERROR_MESSAGE', data)
         const payload = {
           title: 'failed create data',
