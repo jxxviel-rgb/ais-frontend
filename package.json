@@ -31,6 +31,7 @@
     "vue": "3.2.0",
     "vue-flatpickr-component": "9.0.5",
     "vue-router": "4.0.14",
+    "vue-select": "^4.0.0-beta.3",
     "vue-sweetalert2": "^5.0.5",
     "vue-uuid": "^3.0.0",
     "vuex": "^4.0.2"

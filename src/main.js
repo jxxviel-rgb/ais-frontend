@@ -12,6 +12,10 @@ import emitter from 'mitt'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
+import VueSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css'
+
+
 const appInstance = createApp(App)
 appInstance.config.globalProperties.emitter = emitter()
 appInstance.use(store)
@@ -20,4 +24,5 @@ appInstance.use(ArgonDashboard)
 appInstance.use(VueSweetalert2)
 appInstance.component('data-index', DataIndex)
 appInstance.component('base-modal', BaseModal)
+appInstance.component('vue-select', VueSelect)
 appInstance.mount('#app')

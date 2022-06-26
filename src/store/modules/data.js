@@ -88,14 +88,20 @@ export const data = {
           title: 'Success Update data',
         }
         store.dispatch('notif/success', { payload })
+        commit('SET_LOADING', false)
+        return true
       } catch (err) {
         console.log(err)
         const payload = {
           title: 'failed failed data',
         }
         store.dispatch('notif/error', { payload })
+        commit('SET_LOADING', false)
+        return false
       }
-      commit('SET_LOADING', false)
     },
+    validationReset({ commit }) {
+      commit('RESET_ERROR_MESSAGE')
+    }
   },
 }
