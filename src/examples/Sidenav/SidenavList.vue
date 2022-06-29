@@ -37,7 +37,7 @@
           </template>
         </sidenav-item>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <sidenav-item
           url="/crew-departure"
           :class="getRoute() === 'Crew Departure' ? 'active' : ''"
@@ -47,7 +47,7 @@
             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
           </template>
         </sidenav-item>
-      </li>
+      </li> -->
       <li class="nav-item">
         <sidenav-item
           url="/activity"

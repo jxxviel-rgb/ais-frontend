@@ -85,6 +85,11 @@ const routes = [
     component: () => import('@/views/page/Activity.vue'),
   },
   {
+    path: '/activity-create',
+    name: 'Activity Create',
+    component: () => import('@/views/page/CreateActivity.vue'),
+  },
+  {
     path: '/vessel',
     name: 'Vessel',
     component: () => import('@/views/page/Vessel.vue'),
