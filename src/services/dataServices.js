@@ -7,7 +7,7 @@ function dataIndex(path, query) {
   const option = {
     method: 'GET',
     headers: authServices.authHeader(),
-    url: `${path}/?${params}`,
+    url: `${path}${query ? '/?' + params : ''}`,
   }
   return backendServices(option)
 }

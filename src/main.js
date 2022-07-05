@@ -16,7 +16,13 @@ import VueSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css'
 
 
+import DatePicker  from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
+
+import moment from 'moment'
+
 const appInstance = createApp(App)
+appInstance.config.globalProperties.$moment = moment
 appInstance.config.globalProperties.emitter = emitter()
 appInstance.use(store)
 appInstance.use(router)
@@ -25,4 +31,5 @@ appInstance.use(VueSweetalert2)
 appInstance.component('data-index', DataIndex)
 appInstance.component('base-modal', BaseModal)
 appInstance.component('vue-select', VueSelect)
+appInstance.component('date-picker', DatePicker)
 appInstance.mount('#app')

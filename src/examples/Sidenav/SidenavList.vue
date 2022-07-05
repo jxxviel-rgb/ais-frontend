@@ -37,17 +37,6 @@
           </template>
         </sidenav-item>
       </li>
-      <!-- <li class="nav-item">
-        <sidenav-item
-          url="/crew-departure"
-          :class="getRoute() === 'Crew Departure' ? 'active' : ''"
-          navText="Crew Departure"
-        >
-          <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-          </template>
-        </sidenav-item>
-      </li> -->
       <li class="nav-item">
         <sidenav-item
           url="/activity"

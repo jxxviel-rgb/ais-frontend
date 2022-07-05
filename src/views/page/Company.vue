@@ -103,6 +103,7 @@ const column = [
   {
     name: 'Address',
     dataIndex: 'address',
+    width: '20%'
   },
 ]
 
