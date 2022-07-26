@@ -16,7 +16,11 @@
                 :actions="actions"
                 @data-edit="handleUpdate"
                 @data-delete="handleDelete"
-              />
+              >
+                <template #gender="prop">
+                  {{ prop.gender == "m" ? "Male" : "Female" }}
+                </template>
+              </data-index>
             </div>
           </div>
         </div>
@@ -54,14 +58,34 @@
           {{ errorState["name"] ? errorState["name"][0] : "" }}
         </div>
       </div>
+        <label for="">Gender {{gender}}</label>
       <div class="form-group">
-        <label for="">Gender</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="gender"
-          :class="{ 'is-invalid': errorState['gender'] }"
-        />
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            value="m"
+            v-model="gender"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Male
+          </label>
+        </div>
+        <div class="form-check form-check-inline  ">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault2"
+            value="f"
+            v-model="gender"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Female
+          </label>
+        </div>
         <div class="invalid-feedback">
           {{ errorState["gender"] ? errorState["gender"][0] : "" }}
         </div>
@@ -237,24 +261,24 @@ export default {
       }
     },
     handleDelete(data) {
-      this.id = data.id
+      this.id = data.id;
       this.$swal({
-        icon: 'question',
-        title: 'Are you sure?',
+        icon: "question",
+        title: "Are you sure?",
         html: `Want to delete <strong> ${data.name} </strong>`,
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          this.dataDeleted()
+          this.dataDeleted();
         }
-      })
+      });
     },
     async dataDeleted() {
-      await this.$store.dispatch('data/delete', {
+      await this.$store.dispatch("data/delete", {
         path: this.apiPath,
         id: this.id,
-      })
-      this.$store.dispatch('data/index', { path: this.apiPath })
+      });
+      this.$store.dispatch("data/index", { path: this.apiPath });
     },
   },
 };

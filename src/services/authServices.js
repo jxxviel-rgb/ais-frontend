@@ -6,6 +6,7 @@ export default {
   loggingIn,
   authHeader,
   getAuhtData,
+  removeAuthData,
 }
 
 function login(username, password) {
@@ -32,7 +33,11 @@ function authHeader() {
 function getAuhtData() {
   const raw = localStorage.getItem(config.authData)
   if (!raw) {
-    return {}
+    return null;
   }
   return JSON.parse(raw)
+}
+
+function removeAuthData() {
+  localStorage.clear()
 }

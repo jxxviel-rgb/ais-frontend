@@ -31,5 +31,11 @@ export const auth = {
         store.dispatch('notif/error', { payload })
       }
     },
+
+    logout({commit}) {
+       authServices.removeAuthData()
+      commit('SET_AUTH', null)
+      router.push({name: 'SignIn'})
+    }
   },
 }

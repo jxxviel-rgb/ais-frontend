@@ -7,6 +7,7 @@ import RTL from '../views/Rtl.vue'
 import Profile from '../views/Profile.vue'
 import Signup from '../views/Signup.vue'
 import Signin from '../views/Signin.vue'
+import auth from '../services/authServices'
 
 const routes = [
   {
@@ -101,5 +102,20 @@ const router = createRouter({
   routes,
   linkActiveClass: 'active',
 })
+
+router.beforeEach((to, _from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+ 
+  const publicPages = ['/signin'];
+  const toPublic = publicPages.includes(to.path);
+  //const authInfo = sessionStorage.getItem(config.authInfo);
+  const authInfo = auth.getAuhtData();
+
+  if (!toPublic && !authInfo) {
+      return next('/signin');
+  }
+  next();
+})
+
 
 export default router
