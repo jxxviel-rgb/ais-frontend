@@ -17,31 +17,19 @@
                 @data-edit="handleEdit"
                 @data-crew="handleCrewDeparture"
               >
-                <template #income="prop">
-                  <div class="text-center">
-                    {{ prop.income ?? "-" }}
-                  </div>
-                </template>
-                <template #departure_date="prop">
+                <template #sail_date="prop">
                   {{
-                    this.$moment(prop.departure_date, "yyyy-mm-DD").format(
+                    this.$moment(prop.sail_date, "yyyy-mm-DD").format(
                       "DD MMM yyyy"
                     )
                   }}
                 </template>
-                <template #return_date="prop">
-                  {{
-                    this.$moment(prop.return_date, "yyyy-mm-DD").format(
-                      "DD MMM yyyy"
-                    )
-                  }}
-                </template>
-                <template #status="prop">
-                  <div v-if="prop.status == 'depart'">
-                    <div class="badge badge-sm bg-warning">Depart</div>
+                <template #is_sail="prop">
+                  <div v-if="prop.is_sail">
+                    <div class="badge badge-sm bg-warning">Sail</div>
                   </div>
                   <div v-else>
-                    <div class="badge badge-sm bg-info">Return</div>
+                    <div class="badge badge-sm bg-info">Berth</div>
                   </div>
                 </template>
               </data-index>
@@ -72,6 +60,20 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="">Place of departure</label>
+        <vue-select
+          :options="harbors"
+          label="name"
+          class="form-controll"
+          v-model="harborSelected"
+          :value="harborSelected"
+          :class="{ 'is-invalid': errorState['companyId'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState["companyId"] ? errorState["companyId"][0] : "" }}
+        </div>
+      </div>
+      <div class="form-group">
         <label for="">Vessel Name</label>
         <vue-select
           :options="vessels"
@@ -86,7 +88,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="">Departure Date</label>
+        <label for="">Sail Date</label>
         <input
           type="date"
           class="form-control"
@@ -97,43 +99,6 @@
           {{
             errorState["dateDeparture"] ? errorState["dateDeparture"][0] : ""
           }}
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="">Return Date</label>
-        <input
-          type="date"
-          class="form-control"
-          :class="{ 'is-invalid': errorState['dateReturn'] }"
-          v-model="returnDate"
-        />
-        <div class="invalid-feedback">
-          {{ errorState["dateReturn"] ? errorState["dateReturn"][0] : "" }}
-        </div>
-      </div>
-      <label for="">Status</label>
-      <div class="form-check form-switch">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value="Depart"
-          v-model="status"
-        />
-        <label class="form-check-label" for="flexSwitchCheckDefault">{{
-          statusLable
-        }}</label>
-      </div>
-      <div class="form-group" v-if="status">
-        <label for="">Amount</label>
-        <input
-          type="number"
-          placeholder="amount"
-          v-model="amount"
-          class="form-control"
-          :class="{ 'is-invalid': errorState['amount'] }"
-        />
-        <div class="invalid-feedback">
-          {{ errorState["amount"] ? errorState["amount"][0] : "" }}
         </div>
       </div>
     </template>
@@ -210,12 +175,8 @@ const columns = [
     dataIndex: "company.name",
   },
   {
-    name: "Departure Date",
-    dataIndex: "departure_date",
-  },
-  {
-    name: "Return Ddate",
-    dataIndex: "return_date",
+    name: "Sail Date",
+    dataIndex: "sail_date",
   },
   {
     name: "Total Crew",
@@ -223,11 +184,7 @@ const columns = [
   },
   {
     name: "Status",
-    dataIndex: "status",
-  },
-  {
-    name: "Income",
-    dataIndex: "income",
+    dataIndex: "is_sail",
   },
 ];
 
@@ -257,6 +214,8 @@ export default {
       dateDeparture: null,
       companies: [],
       companySelected: null,
+      harbors: [], 
+      harborSelected: null,
       vessels: [],
       vesselSelected: null,
       departureDate: null,
@@ -300,6 +259,8 @@ export default {
       this.emitter.emit("fetch", this.apiPath);
 
       try {
+        const harbors = await services.dataIndex("/pelabuhan");
+        this.harbors = harbors.data.result;
         const result = await services.dataIndex("/company");
         this.companies = result.data.result;
       } catch (err) {
@@ -314,12 +275,10 @@ export default {
     },
     async activityCreated() {
       let data = {
-        companyId: this.companySelected?.id ?? null,
-        vesselId: this.vesselSelected?.id ?? null,
-        dateDeparture: this.departureDate,
-        dateReturn: this.returnDate,
-        status: this.status ? "return" : "depart",
-        amount: this.amount,
+        company_id: this.companySelected?.id ?? null,
+        vessel_id: this.vesselSelected?.id ?? null,
+        pelabuhan_sail_id: this.harborSelected.id ?? null,
+        sail_date: this.departureDate,
       };
 
       try {

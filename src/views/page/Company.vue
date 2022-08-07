@@ -16,6 +16,7 @@
                 :actions="actions"
                 @data-edit="updateCompany"
                 @data-delete="handleDelete"
+                @data-detail="dataDetail"
               />
             </div>
           </div>
@@ -80,6 +81,18 @@
           {{ errorState['address'] ? errorState['address'][0] : '' }}
         </div>
       </div>
+      <div class="form-group">
+        <label for="">Owner</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="owner"
+          :class="{ 'is-invalid': errorState['owner'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState['owner'] ? errorState['owner'][0] : '' }}
+        </div>
+      </div>
     </template>
   </base-modal>
 </template>
@@ -101,9 +114,8 @@ const column = [
     dataIndex: 'phone',
   },
   {
-    name: 'Address',
-    dataIndex: 'address',
-    width: '20%'
+    name: 'Owner',
+    dataIndex: 'owner',
   },
 ]
 
@@ -114,9 +126,9 @@ const actions = [
     class: 'btn-warning',
   },
   {
-    title: 'Delete',
-    emit: 'data-delete',
-    class: 'btn-outline-danger',
+    title: 'Detail',
+    emit: 'data-detail',
+    class: 'btn-outline-info',
   },
 ]
 
@@ -133,6 +145,7 @@ export default {
       regNumber: '',
       phone: '',
       address: '',
+      owner: '',
     }
   },
   computed: {
@@ -163,11 +176,11 @@ export default {
       try {
         const response = await services.dataIndex(`${this.apiPath}/${data.id}`)
         let result = response.data.result
-
         this.name = result.name
         this.regNumber = result.registration_number
         this.phone = result.phone
         this.address = result.address
+        this.owner = result.owner
         this.modalTitle = `Update ${data.name}`
         this.emitter.emit('show-modal')
       } catch (err) {
@@ -180,6 +193,7 @@ export default {
         registration_number: this.regNumber,
         phone: this.phone,
         address: this.address,
+        owner: this.owner,
       }
 
       this.$store.dispatch('data/update', {
@@ -197,6 +211,7 @@ export default {
         registration_number: this.regNumber,
         phone: this.phone,
         address: this.address,
+        owner: this.owner
       }
 
       try {
@@ -233,6 +248,9 @@ export default {
       })
       this.$store.dispatch('data/index', { path: this.apiPath })
     },
+    dataDetail(data) {
+      this.$router.push(`/company/${data.id}`)
+    }
   },
 }
 </script>

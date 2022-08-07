@@ -26,6 +26,11 @@ const routes = [
     component: () => import('@/views/page/Company.vue'),
   },
   {
+    path: '/company/:id',
+    name: 'Company Detail',
+    component: () => import('@/views/page/CompanyDetail.vue'),
+  },
+  {
     path: '/signin',
     name: 'SignIn',
     component: () => import('@/views/page/Signin.vue'),
@@ -86,6 +91,11 @@ const routes = [
     component: () => import('@/views/page/Activity.vue'),
   },
   {
+    path: '/fisherman-product',
+    name: 'Fisherman Product',
+    component: () => import('@/views/page/Product.vue'),
+  },
+  {
     path: '/activity-create',
     name: 'Activity Create',
     component: () => import('@/views/page/CreateActivity.vue'),
@@ -94,6 +104,11 @@ const routes = [
     path: '/vessel',
     name: 'Vessel',
     component: () => import('@/views/page/Vessel.vue'),
+  },
+  {
+    path: '/catch-type',
+    name: 'Catch type',
+    component: () => import('@/views/page/Type.vue'),
   },
 ]
 

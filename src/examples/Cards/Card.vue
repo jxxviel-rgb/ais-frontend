@@ -3,8 +3,8 @@
     <div class="p-3 card-body">
       <div class="d-flex" :class="directionReverse ? reverseDirection : ''">
         <div>
-          <div
-            class="text-center icon icon-shape"
+          <!-- <div
+            class="text-center icon icon-shape text-white"
             :class="`${iconBackground} ${
               this.$store.state.isRTL ? 'border-radius-md' : 'border-radius-2xl'
             }`"
@@ -14,7 +14,10 @@
               :class="iconClass"
               aria-hidden="true"
             ></i>
-          </div>
+          </div> -->
+            <div class="text-white p-2 border-radius-2xl" :class="iconBackground">
+              <fa-icon :icon="iconClass" size="lg" fixed-width aria-hidden="true"></fa-icon>
+            </div>
         </div>
         <div :class="contentClass">
           <div class="numbers" v-if="this.$store.state.isRTL">
@@ -40,10 +43,10 @@
               {{ title }}
             </p>
             <h5 class="font-weight-bolder" :class="valueColor">{{ value }}</h5>
-            <span class="text-sm" :class="percentageColor">{{
+            <!-- <span class="text-sm" :class="percentageColor">{{
               percentage
-            }}</span>
-            {{ detail }}
+            }}</span> -->
+            <!-- {{ detail }} -->
           </div>
         </div>
       </div>
