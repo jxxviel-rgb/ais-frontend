@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+    class="px-0 mx-4 shadow-none  navbar navbar-main navbar-expand-lg border-radius-xl"
     :class="
       this.$store.state.isRTL ? 'top-0 position-sticky z-index-sticky' : ''
     "
@@ -21,23 +21,25 @@
           :class="this.$store.state.isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
           <div class="input-group">
-            <span class="input-group-text text-body">
+            <!-- <span class="input-group-text text-body">
               <i class="fas fa-search" aria-hidden="true"></i>
-            </span>
-            <input
+            </span> -->
+            <!-- <input
               type="text"
               class="form-control"
               :placeholder="
                 this.$store.state.isRTL ? 'أكتب هنا...' : 'Type here...'
               "
-            />
+            /> -->
+
+            <!-- <Contoh></Contoh> -->
           </div>
         </div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
             <router-link
               :to="{ name: 'Signin' }"
-              class="px-0 nav-link font-weight-bold text-white"
+              class="px-0 text-white nav-link font-weight-bold"
               target="_blank"
             >
               <i
@@ -54,18 +56,18 @@
             <a
               href="#"
               @click="toggleSidebar"
-              class="p-0 nav-link text-white"
+              class="p-0 text-white nav-link"
               id="iconNavbarSidenav"
             >
               <div class="sidenav-toggler-inner">
-                <i class="sidenav-toggler-line bg-white"></i>
-                <i class="sidenav-toggler-line bg-white"></i>
-                <i class="sidenav-toggler-line bg-white"></i>
+                <i class="bg-white sidenav-toggler-line"></i>
+                <i class="bg-white sidenav-toggler-line"></i>
+                <i class="bg-white sidenav-toggler-line"></i>
               </div>
             </a>
           </li>
           <li class="px-3 nav-item d-flex align-items-center">
-            <a class="p-0 nav-link text-white" @click="toggleConfigurator">
+            <a class="p-0 text-white nav-link" @click="toggleConfigurator">
               <i class="cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
             </a>
           </li>
@@ -75,7 +77,7 @@
           >
             <a
               href="#"
-              class="p-0 nav-link text-white"
+              class="p-0 text-white nav-link"
               :class="[showMenu ? 'show' : '']"
               id="dropdownMenuButton"
               data-bs-toggle="dropdown"
@@ -139,7 +141,7 @@
                 <a class="dropdown-item border-radius-md" href="javascript:;">
                   <div class="py-1 d-flex">
                     <div
-                      class="my-auto avatar avatar-sm bg-gradient-secondary me-3"
+                      class="my-auto  avatar avatar-sm bg-gradient-secondary me-3"
                     >
                       <svg
                         width="12px"
@@ -198,27 +200,29 @@
   </nav>
 </template>
 <script>
-import Breadcrumbs from '../Breadcrumbs.vue'
-import { mapMutations, mapActions } from 'vuex'
+import Breadcrumbs from "../Breadcrumbs.vue";
+import { mapMutations, mapActions } from "vuex";
 
 export default {
-  name: 'navbar',
+  name: "navbar",
   data() {
     return {
       showMenu: false,
-    }
+      options: ["aasdad", "basdasda", "casdasdas"],
+      optionSelected: null,
+    };
   },
-  props: ['minNav', 'textWhite'],
+  props: ["minNav", "textWhite"],
   created() {
-    this.minNav
+    this.minNav;
   },
   methods: {
-    ...mapMutations(['navbarMinimize', 'toggleConfigurator']),
-    ...mapActions(['toggleSidebarColor']),
+    ...mapMutations(["navbarMinimize", "toggleConfigurator"]),
+    ...mapActions(["toggleSidebarColor"]),
 
     toggleSidebar() {
-      this.toggleSidebarColor('bg-white')
-      this.navbarMinimize()
+      this.toggleSidebarColor("bg-white");
+      this.navbarMinimize();
     },
   },
   components: {
@@ -226,8 +230,13 @@ export default {
   },
   computed: {
     currentRouteName() {
-      return this.$route.name
+      return this.$route.name;
     },
   },
-}
+};
 </script>
+<style scoped>
+/* .dropdown-content{
+  position: absolute
+} */
+</style>
