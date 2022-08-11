@@ -12,20 +12,40 @@ function dataIndex(path, query) {
   return backendServices(option)
 }
 
-function dataCreate(path, data) {
+function dataCreate(path, data, withfile = false) {
+  let headers = {}
+  if(withfile) {
+    headers = {
+      ...authServices.authHeader(),
+      'Content-Type': 'multipart/form-data'
+    }
+  } else {
+    headers = authServices.authHeader()
+  }
+  
   const options = {
     method: 'POST',
-    headers: authServices.authHeader(),
+    headers,
     data: data,
     url: path,
   }
   return backendServices(options)
 }
 
-function dataUpdate(path, id, data) {
+function dataUpdate(path, id, data, withfile = false) {
+  let headers = {}
+  if(withfile) {
+    headers = {
+      ...authServices.authHeader(),
+      'Content-Type': 'multipart/form-data'
+    }
+  } else {
+    headers = authServices.authHeader()
+  }
+  
   const options = {
     method: 'PUT',
-    headers: authServices.authHeader(),
+    headers,
     data: data,
     url: `${path}/${id}`,
   }
