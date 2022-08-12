@@ -30,6 +30,7 @@ import { AisEncode } from "ggencoder";
 import { AisDecode } from "ggencoder";
 import Modal from "/src/components/Modal.vue";
 import "../../../src/index.css";
+import eezIndonesia from "../../../src/assets/js/zee.json";
 
 const map = ref(null);
 const geoMarker = ref(null);
@@ -54,6 +55,8 @@ const isPastTrackActive = ref(false);
 const clearOption = ref(false);
 const circleMarker = ref(null);
 const pastTrackId = ref(null);
+const geoPolygon = ref(null);
+const filterLocation = ref([]);
 const removeMarker = (id) => {
   markers.value.forEach((marker, index, arr) => {
     if (marker._leaflet_id === id) {
@@ -104,28 +107,39 @@ const pastTrack = (id) => {
   isPastTrackActive.value = !isPastTrackActive.value;
   pastTrackId.value = id;
 
-  store.dispatch("data/getVesselPositions", vesselId.value).then((res) => {
-    locations.value = store.state.data.vesselPositions[0].position;
+  store.dispatch("data/getVesselPositions", id).then((res) => {
+    // console.log(res);
+    locations.value = res[0].position;
     let filterLocations = locations.value.map((obj) => {
       return [obj.latitude, obj.longitude];
     });
     if (polyline.value) {
-      map.value.removeLayer(polyline.value);
+      console.log("%cMasuk", "background-color: yellow");
+
+      // map.value.removeLayer(polyline.value);
+      polyline.value.remove();
     }
     polyline.value = leaflet.polyline(filterLocations, {
       color: "black",
       dashArray: "20",
     });
-    if (featureGroup.value) {
-      map.value.removeLayer(featureGroup.value);
-    }
 
-    featureGroup.value = leaflet.featureGroup([
-      geoMarker.value,
-      polyline.value,
-    ]);
-    map.value.addLayer(featureGroup.value);
+    // if (featureGroup.value) {
+    //   console.log("%cMasuk", "background-color: red");
+    //   map.value.removeLayer(featureGroup.value);
+    //   // featureGroup.value.remove();
+    //   // console.log(featureGroup.value);
+    // }
+    // markers.value.forEach((marker) => {
+    //   if (marker._leaflet_id !== id) return;
+
+    featureGroup.value = leaflet
+      .featureGroup([geoMarker.value, polyline.value])
+      .addTo(map.value);
+    // featureGroup.value._leaflet_id = id;
+    // map.value.addLayer(featureGroup.value);
     map.value.fitBounds(featureGroup.value.getBounds());
+    // });
   });
 };
 const plotGeolocation = (name, mmsi, lat, long, id) => {
@@ -139,10 +153,12 @@ const plotGeolocation = (name, mmsi, lat, long, id) => {
   geoMarker.value.setRotationAngle(angle.value);
   markers.value.push(geoMarker.value);
 };
+// Start of OnMounted lifecycle
 onMounted(() => {
   map.value = leaflet
     .map("mymap")
     .setView([coordinate.value.lat, coordinate.value.lon], 6);
+  geoPolygon.value = leaflet.geoJSON(eezIndonesia).addTo(map.value);
 
   leaflet
     .tileLayer(
@@ -160,65 +176,6 @@ onMounted(() => {
     )
     .addTo(map.value);
 
-  // pusher debug mode on
-  Pusher.logToConsole = true;
-  // initializing pusher client
-  const pusher = new Pusher("e4ed3df3a3664c4e917a", {
-    cluster: "ap1",
-  });
-
-  const channel = pusher.subscribe("location-tracker");
-  // watch every state changes and update it with pusher
-  channel.bind("location", (data) => {
-    location.value = data;
-    removeMarker(location.value.vessel.id);
-    updateCoordinates(
-      location.value.vessel.name,
-      location.value.vessel.mmsi,
-      location.value.vessel.id
-    );
-    if (pastTrackId.value === location.value.vessel.id) {
-      store
-        .dispatch("data/getVesselPositions", pastTrackId.value)
-        .then((res) => {
-          locations.value = store.state.data.vesselPositions[0].position;
-          // locations.value.push(location.value.vessel);
-          let filterLocations = locations.value.map((obj) => {
-            return [obj.latitude, obj.longitude];
-          });
-          // console.log(filterLocations);
-          if (polyline.value) {
-            map.value.removeLayer(polyline.value);
-          }
-          polyline.value = leaflet.polyline(filterLocations, {
-            color: "black",
-            dashArray: "20",
-          });
-          // if (featureGroup.value) {
-          //   featureGroup.value.remove();
-          // }
-          markers.value.forEach((marker) => {
-            if (marker._leaflet_id !== pastTrackId.value) return;
-            featureGroup.value = leaflet.featureGroup([
-              geoMarker.value,
-              polyline.value,
-            ]);
-            map.value.addLayer(featureGroup.value);
-            // map.value.fitBounds(featureGroup.value.getBounds());
-          });
-        });
-    }
-
-    geoMarker.value.on("click", function (e) {
-      store
-        .dispatch("data/getSpecificVesselInfo", e.sourceTarget._leaflet_id)
-        .then((res) => {
-          vesselId.value = store.getters["data/GET_VESSEL_INFO"].result.id;
-          isModalOpen.value = !isModalOpen.value;
-        });
-      // geoMarker.value._leaflet_id = location.value.vessel.id;
-    });
-  });
   store.dispatch("data/getVesselPosition").then((res) => {
     vessels.value = res.data.data;
     vessels.value.forEach((vessel) => {
@@ -268,7 +225,71 @@ onMounted(() => {
       });
     });
   });
+  // pusher debug mode on
+  Pusher.logToConsole = true;
+  // initializing pusher client
+  const pusher = new Pusher("e4ed3df3a3664c4e917a", {
+    cluster: "ap1",
+    activityTimeout: 10000,
+  });
+
+  const channel = pusher.subscribe("location-tracker");
+  // watch every state changes and update it with pusher
+  channel.bind("location", (data) => {
+    location.value = data;
+    removeMarker(location.value.vessel.id);
+    updateCoordinates(
+      location.value.vessel.name,
+      location.value.vessel.mmsi,
+      location.value.vessel.id
+    );
+    if (pastTrackId.value === location.value.vessel.id) {
+      console.log("%cHALO", "background-color: red");
+      store
+        .dispatch("data/getVesselPositions", pastTrackId.value)
+        .then((res) => {
+          locations.value = store.state.data.vesselPositions[0].position;
+          // locations.value.push(location.value.vessel);
+          let filterLocations = locations.value.map((obj) => {
+            return [obj.latitude, obj.longitude];
+          });
+
+          // if (featureGroup.value) {
+          //   map.value.removeLayer(featureGroup.value);
+          //   // featureGroup.value.remove();
+          // }
+          if (polyline.value) {
+            map.value.removeLayer(polyline.value);
+            // featureGroup.value.remove();
+          }
+          polyline.value = leaflet.polyline(filterLocations, {
+            color: "black",
+            dashArray: "20",
+          });
+          // markers.value.forEach((marker) => {
+          //   if (marker._leaflet_id !== pastTrackId.value) return;
+
+          featureGroup.value = leaflet.featureGroup([
+            geoMarker.value,
+            polyline.value,
+          ]);
+          map.value.addLayer(featureGroup.value);
+          // });
+        });
+    }
+
+    geoMarker.value.on("click", function (e) {
+      store
+        .dispatch("data/getSpecificVesselInfo", e.sourceTarget._leaflet_id)
+        .then((res) => {
+          vesselId.value = store.getters["data/GET_VESSEL_INFO"].result.id;
+          isModalOpen.value = !isModalOpen.value;
+        });
+      // geoMarker.value._leaflet_id = location.value.vessel.id;
+    });
+  });
 });
+// End of OnMounted lifecycle
 </script>
 
 <style>
