@@ -83,31 +83,38 @@
             <div class="card-body text-dark">
               <div class="d-flex justify-content-between">
                 <div class="container-fluid">
+                  Diterima :
+                  {{
+                    store.state.data.vesselInfo &&
+                    store.state.data.vesselInfo.result.latest_position
+                      .last_report
+                  }}
+                  <br />
                   Lat/Lon :
                   {{
                     store.state.data.vesselInfo &&
-                    store.state.data.vesselInfo.result.position[0].latitude
+                    store.state.data.vesselInfo.result.latest_position.latitude
                   }}/{{
                     store.state.data.vesselInfo &&
-                    store.state.data.vesselInfo.result.position[0].longitude
+                    store.state.data.vesselInfo.result.latest_position.longitude
                   }}
                   <br />
                   Kecepatan :
                   {{
                     store.state.data.vesselInfo &&
-                    store.state.data.vesselInfo.result.position[0].speed
+                    store.state.data.vesselInfo.result.latest_position.speed
                   }}kn
                   <br />
                   Course :
                   {{
                     store.state.data.vesselInfo &&
-                    store.state.data.vesselInfo.result.position[0].course
+                    store.state.data.vesselInfo.result.latest_position.course
                   }}&deg;
                   <br />
                   Status :
                   {{
                     store.state.data.vesselInfo &&
-                    store.state.data.vesselInfo.result.position[0]
+                    store.state.data.vesselInfo.result.latest_position
                       .navigation_status
                   }}
                 </div>
@@ -148,6 +155,9 @@
                     store.state.data.vesselInfo &&
                     store.state.data.vesselInfo.result.type
                   }}
+                  <br />
+                  Bendera :
+                  {{ store.state.data.vesselInfo && vesselFlag[0].country }}
                 </div>
               </div>
             </div>
@@ -172,8 +182,21 @@
 <script setup>
 import { useStore } from "vuex";
 import { onMounted, ref } from "vue";
+import flagscode from "../../flags.json";
 const store = useStore();
 const vessel = ref(null);
+const firstThreeDigitMmsi = ref(null);
+const vesselFlag = ref(null);
+// const firstFourDigitMmsi = ref(null);
+// firstFourDigitMmsi.value = store.state.data.vesselInfo.result.mmsi.substr(0, 4);
+// alert(firstFourDigitMmsi.value);
+firstThreeDigitMmsi.value = store.state.data.vesselInfo.result.mmsi.substr(
+  0,
+  3
+);
+vesselFlag.value = flagscode.filter(
+  (flag) => flag.mid === firstThreeDigitMmsi.value
+);
 </script>
 
 <style lang="css" scoped>
