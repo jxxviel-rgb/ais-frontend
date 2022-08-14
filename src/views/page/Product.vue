@@ -8,7 +8,7 @@
               <h6>Fisherman product data</h6>
             </div>
             <div class="card-body">
-              <button class="btn btn-primary" @click="handleCreate()">
+              <button class="btn btn-primary" @click="handleCreate()" v-if="user.role == 'owner'">
                 Add new fisherman product
               </button>
               <data-index
@@ -155,7 +155,6 @@ export default {
       crewModal: "crew-modal",
       apiPath: "/activity?berth=false",
       columns,
-      action,
       isEdit: false,
       id: "",
       harbors: [], 
@@ -175,6 +174,12 @@ export default {
     statusLable() {
       return this.status ? "Return" : "Depart";
     },
+    user() {
+      return this.$store.state.auth.user
+    },
+    action() {
+      return this.user.role == 'owner' ? action : null
+    }
   },
   mounted() {
     this.initData();

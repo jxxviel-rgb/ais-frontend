@@ -3,14 +3,15 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-12">
+          <div class="col-lg-4 col-md-6 col-12" v-if="user.role == 'admin'">
             <card
               title="Total Company"
               :value="totalCompany"
               iconClass="fa-solid fa-building"
               iconBackground="bg-primary"
               directionReverse
-            ></card>
+              
+            />
           </div>
           <div class="col-lg-4 col-md-6 col-12">
             <card
@@ -80,6 +81,11 @@ export default {
     // Carousel,
     // CategoriesCard,
   },
+  computed: {
+    user() {
+      return this.$store.state.auth.user
+    },
+  },  
   mounted() {
     this.initData();
   },

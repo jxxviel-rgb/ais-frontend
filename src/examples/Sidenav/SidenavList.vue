@@ -15,9 +15,20 @@
           </template>
         </sidenav-item>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/company"
+          :class="getRoute() === 'company' ? 'active' : ''"
+          navText="Company"
+        >
+          <template v-slot:icon>
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item" v-if="user.role == 'owner'">
+        <sidenav-item
+          url="/company/self"
           :class="getRoute() === 'company' ? 'active' : ''"
           navText="Company"
         >
@@ -59,7 +70,7 @@
           </template>
         </sidenav-item>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/harbor"
           :class="getRoute() === 'harbor' ? 'active' : ''"
@@ -81,7 +92,7 @@
           </template>
         </sidenav-item>
       </li> -->
-      <li class="nav-item">
+      <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/catch-type"
           :class="getRoute() === 'catch-type' ? 'active' : ''"
@@ -105,17 +116,17 @@
       </li>
     </ul>
   </div>
-  <!-- <div class="pt-3 mx-3 mt-3 sidenav-footer">
+  <div class="pt-3 mx-3 mt-3 sidenav-footer">
     <sidenav-card
       :class="cardBg"
       textPrimary="Need Help?"
       textSecondary="Please check our docs"
     />
-  </div> -->
+  </div>
 </template>
 <script>
 import SidenavItem from './SidenavItem.vue'
-// import SidenavCard from './SidenavCard.vue'
+import SidenavCard from './SidenavCard.vue'
 
 export default {
   name: "SidenavList",
@@ -131,7 +142,12 @@ export default {
   },
   components: {
     SidenavItem,
-    // SidenavCard,
+    SidenavCard,
+  },
+  computed: {
+    user() {
+      return this.$store.state.auth.user
+    }
   },
   methods: {
     getRoute() {
