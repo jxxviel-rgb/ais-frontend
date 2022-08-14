@@ -29,6 +29,56 @@
     @on-confirm="isEdit ? dataUpdated() : dataCreated()"
   >
     <template #body>
+      <h6>Data User</h6>
+      <div class="form-group">
+        <label for="">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="email"
+          :class="{ 'is-invalid': errorState['email'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState['email'] ? errorState['email'][0] : '' }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Owner name</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="owner"
+          :class="{ 'is-invalid': errorState['owner'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState['owner'] ? errorState['owner'][0] : '' }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="password"
+          :class="{ 'is-invalid': errorState['password'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState['password'] ? errorState['password'][0] : '' }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Confirm Password</label>
+        <input
+          type="text"
+          class="form-control"
+          v-model="cPassword"
+          :class="{ 'is-invalid': errorState['cPassword'] }"
+        />
+        <div class="invalid-feedback">
+          {{ errorState['cPassword'] ? errorState['cPassword'][0] : '' }}
+        </div>
+      </div>
+      <h6 class="mt-3">Data Company</h6>
       <div class="form-group">
         <label for="">Company Name</label>
         <input
@@ -81,18 +131,6 @@
           {{ errorState['address'] ? errorState['address'][0] : '' }}
         </div>
       </div>
-      <div class="form-group">
-        <label for="">Owner</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="owner"
-          :class="{ 'is-invalid': errorState['owner'] }"
-        />
-        <div class="invalid-feedback">
-          {{ errorState['owner'] ? errorState['owner'][0] : '' }}
-        </div>
-      </div>
     </template>
   </base-modal>
 </template>
@@ -115,7 +153,7 @@ const column = [
   },
   {
     name: 'Owner',
-    dataIndex: 'owner',
+    dataIndex: 'user.name',
   },
 ]
 
@@ -146,6 +184,9 @@ export default {
       phone: '',
       address: '',
       owner: '',
+      email: '',
+      password: '',
+      cPassword: '',
     }
   },
   computed: {
@@ -211,7 +252,10 @@ export default {
         registration_number: this.regNumber,
         phone: this.phone,
         address: this.address,
-        owner: this.owner
+        owner: this.owner,
+        email: this.email,
+        password: this.password,
+        cPassword: this.cPassword,
       }
 
       try {

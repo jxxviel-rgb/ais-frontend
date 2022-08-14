@@ -18,7 +18,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faFerry, faBuilding, faPeopleLine, faFishFins, faShip } from "@fortawesome/free-solid-svg-icons";
 library.add(faFerry, faBuilding, faPeopleLine, faFishFins, faShip);
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
 import DatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 

@@ -416,7 +416,7 @@ export default {
     async getCompany() {
       try {
         const res = await dataServices.dataIndex(
-          `/company/${this.companyId}`
+          `/company/${this.user.company.id}`
         )
 
         const data = res.data.result
@@ -433,7 +433,7 @@ export default {
     async getCrewData() {
       try {
         const res = await dataServices.dataIndex(
-          `/crew/company/${this.$route.params.id}`
+          `/crew/company/${this.user.company.id}`
         );
         this.crew = res.data.result ?? [];
       } catch (err) {
@@ -527,7 +527,7 @@ export default {
     },
     async getVessel() {
       try {
-        const result = await dataServices.dataIndex(`/vessel/company/${this.companyId}`)
+        const result = await dataServices.dataIndex(`/vessel/company/${this.user.company.id}`)
         this.vessels =  result.data.result ?? [];
       } catch(err) {
         console.log(err);

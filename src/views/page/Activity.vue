@@ -8,7 +8,8 @@
               <h6>Activity data</h6>
             </div>
             <div class="card-body">
-              <button class="btn btn-primary" @click="handleCreate()">
+
+              <button class="btn btn-primary" @click="handleCreate()" v-if="user.role == 'admin'">
                 Add new Activity
               </button>
               <data-index
@@ -208,7 +209,6 @@ export default {
       crewModal: "crew-modal",
       apiPath: "/activity",
       columns,
-      action,
       isEdit: false,
       id: "",
       dateDeparture: null,
@@ -234,6 +234,12 @@ export default {
     statusLable() {
       return this.status ? "Return" : "Depart";
     },
+    user() {
+      return this.$store.state.auth.user
+    },
+    action() {
+      return this.user.role == 'admin' ? action : null
+    }
   },
   watch: {
     companySelected: async function (next) {
