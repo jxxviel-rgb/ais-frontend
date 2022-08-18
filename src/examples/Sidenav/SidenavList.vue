@@ -92,7 +92,6 @@
           </template>
         </sidenav-item>
       </li>
-      -->
       <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/catch-type"
@@ -116,7 +115,7 @@
         </sidenav-item>
       </li>
       <li class="nav-item">
-        <sidenav-card></sidenav-card>
+        <!-- <sidenav-card></sidenav-card> -->
       </li>
     </ul>
   </div>
