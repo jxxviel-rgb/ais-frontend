@@ -135,22 +135,10 @@ const pastTrack = (id) => {
       dashArray: "20",
     });
 
-    // if (featureGroup.value) {
-    //   console.log("%cMasuk", "background-color: red");
-    //   map.value.removeLayer(featureGroup.value);
-    //   // featureGroup.value.remove();
-    //   // console.log(featureGroup.value);
-    // }
-    // markers.value.forEach((marker) => {
-    //   if (marker._leaflet_id !== id) return;
-
     featureGroup.value = leaflet
       .featureGroup([geoMarker.value, polyline.value])
       .addTo(map.value);
-    // featureGroup.value._leaflet_id = id;
-    // map.value.addLayer(featureGroup.value);
     map.value.fitBounds(featureGroup.value.getBounds());
-    // });
   });
 };
 function isMarkerInsidePolygon(marker, poly) {
@@ -165,6 +153,7 @@ function isMarkerInsidePolygon(marker, poly) {
       yj = polyPoints[j][0];
     var intersect =
       yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+    // console.log(intersect);
     if (intersect) inside = !inside;
   }
 
@@ -172,7 +161,6 @@ function isMarkerInsidePolygon(marker, poly) {
 }
 const plotGeolocation = (name, mmsi, flag, lat, long, id) => {
   geoMarker.value = leaflet.marker([lat, long], { icon: greenMarker.value });
-  console.log(flag);
   geoMarker.value.bindTooltip(name + "<br>" + mmsi + "<br>" + flag.country);
   geoMarker.value._leaflet_id = id;
 
@@ -268,6 +256,17 @@ onMounted(() => {
           vessel.mmsi.substr(0, 3) !== "525"
         ) {
           marker.setIcon(redMarker.value);
+        }
+        console.log(new Date());
+        console.log(new Date(vessel.latest_position.created_at) > new Date());
+        if (new Date(vessel.latest_position.created_at) > new Date()) {
+          console.log("%c Masok", "color: red");
+          marker
+            .bindPopup(
+              "Last seen : " +
+                new Date(vessel.latest_position.created_at).toDateString()
+            )
+            .openPopup();
         }
       });
     });
