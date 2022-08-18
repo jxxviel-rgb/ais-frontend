@@ -92,7 +92,6 @@
           </template>
         </sidenav-item>
       </li>
-      -->
       <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/catch-type"
@@ -114,9 +113,6 @@
             <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
-      </li>
-      <li class="nav-item">
-        <sidenav-card></sidenav-card>
       </li>
     </ul>
   </div>
