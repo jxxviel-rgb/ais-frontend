@@ -31,9 +31,9 @@ const routes = [
     component: () => import("@/views/page/CompanySelf.vue"),
   },
   {
-    path: '/company/:id',
-    name: 'Company Detail',
-    component: () => import('@/views/page/CompanyDetail.vue'),
+    path: "/company/:id",
+    name: "Company Detail",
+    component: () => import("@/views/page/CompanyDetail.vue"),
   },
   {
     path: "/signin",
@@ -96,14 +96,14 @@ const routes = [
     component: () => import("@/views/page/Activity.vue"),
   },
   {
-    path: '/fisherman-product',
-    name: 'Fisherman Product',
-    component: () => import('@/views/page/Product.vue'),
+    path: "/fisherman-product",
+    name: "Fisherman Product",
+    component: () => import("@/views/page/Product.vue"),
   },
   {
-    path: '/activity-create',
-    name: 'Activity Create',
-    component: () => import('@/views/page/CreateActivity.vue'),
+    path: "/activity-create",
+    name: "Activity Create",
+    component: () => import("@/views/page/CreateActivity.vue"),
   },
   {
     path: "/vessel",
@@ -111,13 +111,13 @@ const routes = [
     component: () => import("@/views/page/Vessel.vue"),
   },
   {
-    path: '/catch-type',
-    name: 'Catch type',
-    component: () => import('@/views/page/Type.vue'),
+    path: "/catch-type",
+    name: "Catch type",
+    component: () => import("@/views/page/Type.vue"),
   },
   {
     path: "/live-map",
-    name: "Map",
+    name: "Live Map",
     component: () => import("@/views/page/Map.vue"),
   },
 ];

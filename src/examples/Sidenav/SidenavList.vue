@@ -1,6 +1,6 @@
 <template>
   <div
-    class="collapse navbar-collapse w-auto h-auto h-100"
+    class="w-auto h-auto collapse navbar-collapse h-100"
     id="sidenav-collapse-main"
   >
     <ul class="navbar-nav">
@@ -11,7 +11,7 @@
           :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Dashboard'"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -22,7 +22,7 @@
           navText="Company"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -33,7 +33,7 @@
           navText="Company"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -44,7 +44,7 @@
           navText="Crew"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li> -->
@@ -55,7 +55,7 @@
           navText="Activity"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -66,7 +66,7 @@
           navText="Fisherman Product"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -77,21 +77,22 @@
           navText="Harbor"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <sidenav-item
           url="/vessel"
           :class="getRoute() === 'vessel' ? 'active' : ''"
           navText="Vessel"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
-      </li> -->
+      </li>
+      -->
       <li class="nav-item" v-if="user.role == 'admin'">
         <sidenav-item
           url="/catch-type"
@@ -99,7 +100,7 @@
           navText="Catch Type"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
       </li>
@@ -110,9 +111,12 @@
           navText="Live Map"
         >
           <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <i class="text-sm ni ni-tv-2 text-primary opacity-10"></i>
           </template>
         </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-card></sidenav-card>
       </li>
     </ul>
   </div>
@@ -125,8 +129,8 @@
   </div>
 </template>
 <script>
-import SidenavItem from './SidenavItem.vue'
-import SidenavCard from './SidenavCard.vue'
+import SidenavItem from "./SidenavItem.vue";
+import SidenavCard from "./SidenavCard.vue";
 
 export default {
   name: "SidenavList",
@@ -146,8 +150,8 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.auth.user
-    }
+      return this.$store.state.auth.user;
+    },
   },
   methods: {
     getRoute() {

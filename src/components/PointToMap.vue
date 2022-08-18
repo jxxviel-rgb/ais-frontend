@@ -5,8 +5,8 @@
         type="text"
         placeholder="Cari Kapal"
         v-model="search"
-        class=""
-        @keypress="searching"
+        class="mb-2 form-control"
+        @keydown="searching"
         style="width: 400px"
       />
       <div class="drpdwn-content">
@@ -45,7 +45,7 @@
   </div>
 </template>
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref, defineEmits, defineProps, watchEffect } from "vue";
 import { useStore } from "vuex";
 import TablesVue from "../views/Tables.vue";
 const store = useStore();
@@ -54,6 +54,9 @@ const search = ref(null);
 const notFound = ref(false);
 const options = ref([]);
 const emit = defineEmits(["pointVessel"]);
+const props = defineProps({
+  clearOption: Boolean,
+});
 const optionSelected = ref(null);
 function debounce(func, timeout = 500) {
   let timer;
@@ -61,14 +64,20 @@ function debounce(func, timeout = 500) {
     clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(this, args);
+      options.value = [];
     }, timeout);
   };
 }
 
 const selectedVessel = (lat, lon) => {
   store.commit("data/SET_SELECTED_VESSEL", { lat, lon });
+  // emit("clearing")
   emit("pointVessel");
 };
+
+watchEffect(() => {
+  if (props.clearOption) options.value = [];
+});
 
 const searching = debounce(() =>
   store
