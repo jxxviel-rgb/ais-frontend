@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     logout() {
+      console.log('test')
       this.$store.dispatch('auth/logout')
     }
   }

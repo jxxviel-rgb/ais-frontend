@@ -84,14 +84,14 @@ export default {
   },
   watch: {
     '$store.state.notif.active': async function () {
-      const notif = this.$store.state.notif
-      if (notif.active) {
-        await this.$swal({
-          icon: notif.icon,
-          title: notif.title,
-        })
-        this.closeHandler()
-      }
+      // const notif = this.$store.state.notif
+      // if (notif.active) {
+      //   await this.$swal({
+      //     icon: notif.icon,
+      //     title: notif.title,
+      //   })
+      //   this.closeHandler()
+      // }
     },
   },
   beforeMount() {
