@@ -221,7 +221,7 @@ export default {
         this.regNumber = result.registration_number
         this.phone = result.phone
         this.address = result.address
-        this.owner = result.owner
+        this.owner = result.user.name
         this.modalTitle = `Update ${data.name}`
         this.emitter.emit('show-modal')
       } catch (err) {
