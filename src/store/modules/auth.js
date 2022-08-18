@@ -4,11 +4,17 @@ import router from '../../router'
 
 export const auth = {
   namespaced: true,
-  state: authServices.getAuhtData(),
+  state: authServices.getAuhtData() ?? {
+    user: {}
+  },
   mutations: {
     SET_AUTH(state, user) {
-      state = user
+
+      state.user = user.user
     },
+    RESET_AUTH(state) {
+      state.user = {}
+    }
   },
   actions: {
     // eslint-disable-next-line no-unused-vars
@@ -22,7 +28,7 @@ export const auth = {
           title: 'Success',
         }
         store.dispatch('notif/success', { payload })
-        router.push({ name: 'Company' })
+        router.push({ name: 'Dashboard' })
       } catch (err) {
         console.log(err)
         const payload = {
@@ -34,7 +40,7 @@ export const auth = {
 
     logout({commit}) {
        authServices.removeAuthData()
-      commit('SET_AUTH', null)
+      commit('RESET_AUTH')
       router.push({name: 'SignIn'})
     }
   },

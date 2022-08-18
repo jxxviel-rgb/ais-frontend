@@ -39,5 +39,5 @@ function getAuhtData() {
 }
 
 function removeAuthData() {
-  localStorage.clear()
+  localStorage.removeItem('auth-data')
 }

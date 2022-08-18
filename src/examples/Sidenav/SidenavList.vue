@@ -92,7 +92,7 @@
           </template>
         </sidenav-item>
       </li>
-      <li class="nav-item" v-if="user.role == 'admin'">
+      <li class="nav-item" v-show="user.role == 'admin'">
         <sidenav-item
           url="/catch-type"
           :class="getRoute() === 'catch-type' ? 'active' : ''"
@@ -114,6 +114,9 @@
           </template>
         </sidenav-item>
       </li>
+      <li class="nav-item">
+        <!-- <sidenav-card></sidenav-card> -->
+      </li>
     </ul>
   </div>
   <div class="pt-3 mx-3 mt-3 sidenav-footer">
@@ -133,17 +136,24 @@ export default {
   props: {
     cardBg: String,
   },
+
   data() {
     return {
       title: "Argon Dashboard 2",
       controls: "dashboardsExamples",
       isActive: "active",
+      // user: {},
     };
   },
   components: {
     SidenavItem,
     SidenavCard,
   },
+  // watch: {
+  //   '$store.state.auth.user':function() {
+  //     this.user = this.$store.state.auth.user;
+  //   }
+  // },
   computed: {
     user() {
       return this.$store.state.auth.user;
