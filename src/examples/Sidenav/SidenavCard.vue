@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card card-plain shadow-none"
+    class="shadow-none card card-plain"
     id="sidenavCard"
   >
     <a
@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     logout() {
-      console.log('test')
       this.$store.dispatch('auth/logout')
     }
   }

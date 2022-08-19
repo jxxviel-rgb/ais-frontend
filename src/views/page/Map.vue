@@ -277,31 +277,10 @@ onMounted(() => {
           isModalOpen.value = !isModalOpen.value;
         });
       });
-      markers.value.forEach((marker) => {
-        if (
-          isMarkerInsidePolygon(marker, polygonFiltered.value) &&
-          vessel.mmsi.substr(0, 3) !== "525"
-        ) {
-          // console.log(vessel.mmsi.substr(0, 3));
-          marker.setIcon(redMarker.value);
-        }
-        // let maxMonth = new Date(vessel.latest_position.created_at);
-        // maxMonth.setMonth(maxMonth.getMonth() + 6);
-        // console.log(maxMonth);
-        // if (new Date(vessel.latest_position.created_at) < new Date()) {
-        //   marker.setIcon(blackMarker.value);
-        //   marker
-        //     .bindPopup(
-        //       "Terakhir Aktif : " +
-        //         new Date(vessel.latest_position.created_at).toLocaleDateString()
-        //     )
-        //     .openPopup();
-        // }
-      });
     });
   });
   // pusher debug mode on
-  Pusher.logToConsole = true;
+  // Pusher.logToConsole = true;
   // initializing pusher client
   const pusher = new Pusher("e4ed3df3a3664c4e917a", {
     cluster: "ap1",
@@ -322,14 +301,6 @@ onMounted(() => {
       location.value.vessel.id,
       location.value.vessel.latest_position.created_at
     );
-    // markers.value.forEach((marker) => {
-    //   if (
-    //     isMarkerInsidePolygon(marker, polygonFiltered.value) &&
-    //     location.value.vessel.mmsi.substr(0, 3) !== "525"
-    //   ) {
-    //     marker.setIcon(redMarker.value);
-    //   }
-    // });
     //! determine vessel is inside polygon, is true change marker
     if (pastTrackId.value === location.value.vessel.id) {
       store
