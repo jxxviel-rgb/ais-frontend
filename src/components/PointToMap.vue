@@ -22,7 +22,6 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-block">
                   <span> {{ option.name }}</span>
-                  <span> {{ option.mmsi }}</span>
                 </div>
 
                 <button

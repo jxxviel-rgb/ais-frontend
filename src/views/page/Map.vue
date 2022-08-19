@@ -64,6 +64,7 @@ const filterLocation = ref([]);
 const firstThreeDigitMmsi = ref([]);
 const flags = ref([]);
 const vesselFlag = ref(null);
+const markerRed = ref(false);
 const removeMarker = (id) => {
   markers.value.forEach((marker, index, arr) => {
     if (marker._leaflet_id === id) {
@@ -72,7 +73,7 @@ const removeMarker = (id) => {
     }
   });
 };
-const updateCoordinates = (name, mmsi, flag, markerId) => {
+const updateCoordinates = (name, mmsi, flag, markerId, lastActive) => {
   let newLocation = {
     latitude: location.value.vessel.latest_position.latitude,
     longitude: location.value.vessel.latest_position.longitude,
@@ -84,7 +85,8 @@ const updateCoordinates = (name, mmsi, flag, markerId) => {
     flag,
     newLocation.latitude,
     newLocation.longitude,
-    markerId
+    markerId,
+    lastActive
   );
 };
 function calcAngleDegrees(x, y) {
@@ -97,6 +99,13 @@ const greenMarker = ref(
     iconAnchor: [10, 20],
   })
 );
+const blackMarker = ref(
+  leaflet.icon({
+    iconUrl: "../../../blackMarker.svg",
+    iconSize: [20, 20],
+    iconAnchor: [10, 20],
+  })
+);
 const redMarker = ref(
   leaflet.icon({
     iconUrl: "../../../redMarker.svg",
@@ -105,14 +114,8 @@ const redMarker = ref(
   })
 );
 const point = () => {
-  // console.table(coordinate.value.lat, coordinate.value.lon);
-  // if (circleMarker.value) map.value.removeLayer(circleMarker.value);
-  // circleMarker.value = leaflet
-  //   .circleMarker([coordinate.value.lat, coordinate.value.lon], { radius: 5 })
-  //   .addTo(map.value);
   clearOption.value = true;
   map.value.setView([coordinate.value.lat, coordinate.value.lon], 15);
-  // clearOption.value = false;
   setTimeout(() => {
     clearOption.value = false;
   }, 1000);
@@ -153,16 +156,42 @@ function isMarkerInsidePolygon(marker, poly) {
       yj = polyPoints[j][0];
     var intersect =
       yi > y != yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
-    // console.log(intersect);
     if (intersect) inside = !inside;
   }
 
   return inside;
 }
-const plotGeolocation = (name, mmsi, flag, lat, long, id) => {
+const plotGeolocation = (name, mmsi, flag, lat, long, id, lastActive) => {
   geoMarker.value = leaflet.marker([lat, long], { icon: greenMarker.value });
-  geoMarker.value.bindTooltip(name + "<br>" + mmsi + "<br>" + flag.country);
   geoMarker.value._leaflet_id = id;
+  if (
+    isMarkerInsidePolygon(geoMarker.value, polygonFiltered.value) &&
+    mmsi.substr(0, 3) !== "525"
+  ) {
+    geoMarker.value.setIcon(redMarker.value);
+  } else {
+    geoMarker.value.setIcon(greenMarker.value);
+  }
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (new Date(lastActive) <= today) {
+    geoMarker.value.setIcon(blackMarker.value);
+    geoMarker.value.bindTooltip(
+      name +
+        "<br>" +
+        mmsi +
+        "<br>" +
+        flag.country +
+        "<br>" +
+        new Date(lastActive).toDateString(),
+      { direction: "top" }
+    );
+  } else {
+    geoMarker.value.bindTooltip(name + "<br>" + mmsi + "<br>" + flag.country, {
+      direction: "top",
+    });
+  }
 
   map.value.addLayer(geoMarker.value);
   angle.value = calcAngleDegrees(lat, long);
@@ -179,9 +208,6 @@ onMounted(() => {
     [],
     eezIndonesia.features[0].geometry.coordinates
   );
-  map.value.on("click", function (e) {
-    alert(e.latlng);
-  });
   leaflet
     .tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoianh4dmllbCIsImEiOiJjbDNoY29sOGExYXFtM2pwODI2eG9nMmg2In0.VFXcjaJrUxJ34qfa5rFXHQ",
@@ -240,7 +266,8 @@ onMounted(() => {
         vesselFlag.value[0],
         vessel.latest_position.latitude,
         vessel.latest_position.longitude,
-        vessel.id
+        vessel.id,
+        vessel.latest_position.created_at
       );
 
       geoMarker.value.on("click", function () {
@@ -255,19 +282,21 @@ onMounted(() => {
           isMarkerInsidePolygon(marker, polygonFiltered.value) &&
           vessel.mmsi.substr(0, 3) !== "525"
         ) {
+          // console.log(vessel.mmsi.substr(0, 3));
           marker.setIcon(redMarker.value);
         }
-        console.log(new Date());
-        console.log(new Date(vessel.latest_position.created_at) > new Date());
-        if (new Date(vessel.latest_position.created_at) > new Date()) {
-          console.log("%c Masok", "color: red");
-          marker
-            .bindPopup(
-              "Last seen : " +
-                new Date(vessel.latest_position.created_at).toDateString()
-            )
-            .openPopup();
-        }
+        // let maxMonth = new Date(vessel.latest_position.created_at);
+        // maxMonth.setMonth(maxMonth.getMonth() + 6);
+        // console.log(maxMonth);
+        // if (new Date(vessel.latest_position.created_at) < new Date()) {
+        //   marker.setIcon(blackMarker.value);
+        //   marker
+        //     .bindPopup(
+        //       "Terakhir Aktif : " +
+        //         new Date(vessel.latest_position.created_at).toLocaleDateString()
+        //     )
+        //     .openPopup();
+        // }
       });
     });
   });
@@ -276,7 +305,7 @@ onMounted(() => {
   // initializing pusher client
   const pusher = new Pusher("e4ed3df3a3664c4e917a", {
     cluster: "ap1",
-    activityTimeout: 10000,
+    // activityTimeout: 10000,
   });
 
   const channel = pusher.subscribe("location-tracker");
@@ -290,17 +319,18 @@ onMounted(() => {
       location.value.vessel.name,
       location.value.vessel.mmsi,
       flagWs.value[0],
-      location.value.vessel.id
+      location.value.vessel.id,
+      location.value.vessel.latest_position.created_at
     );
+    // markers.value.forEach((marker) => {
+    //   if (
+    //     isMarkerInsidePolygon(marker, polygonFiltered.value) &&
+    //     location.value.vessel.mmsi.substr(0, 3) !== "525"
+    //   ) {
+    //     marker.setIcon(redMarker.value);
+    //   }
+    // });
     //! determine vessel is inside polygon, is true change marker
-    markers.value.forEach((marker) => {
-      if (
-        isMarkerInsidePolygon(marker, polygonFiltered.value) &&
-        location.value.vessel.mmsi.substr(0, 3) !== "525"
-      ) {
-        marker.setIcon(redMarker.value);
-      }
-    });
     if (pastTrackId.value === location.value.vessel.id) {
       store
         .dispatch("data/getVesselPositions", pastTrackId.value)
