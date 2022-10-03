@@ -1,4 +1,4 @@
 export default {
-  baseUrl: "http://127.0.0.1:8000/api",
+  baseUrl: "http://http://103.149.71.230/api",
   authData: "auth-data",
 };
