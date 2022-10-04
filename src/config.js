@@ -1,4 +1,4 @@
 export default {
-  baseUrl: "http://103.149.71.230/api",
+  baseUrl: "https://api.vmsais.my.id/api",
   authData: "auth-data",
 };
